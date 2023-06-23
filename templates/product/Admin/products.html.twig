@@ -1,0 +1,15 @@
+{% form_theme product_form "bootstrap_5_layout.html.twig"%}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}HEHEHEHE{% endblock %}
+
+{% block body %}
+{# <a href="{{path('app_logout')}}" class="btn btn-danger" >OUT</a> #}
+<div class="container">
+{{form_start(product_form)}}
+{{form_widget(product_form)}}
+<input type="submit" value="Submit" class="btn btn-primary" />
+{{form_end(product_form)}}
+</div>
+{% endblock %}
