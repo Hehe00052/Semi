@@ -16,7 +16,7 @@ class InformationController extends AbstractController
         ]);
     }
 
-    #[Route('/privacy', name: 'app_about')]
+    #[Route('/privacy', name: 'app_privacy')]
     public function privacy(): Response
     {
         return $this->render('information/privacy.html.twig', [
