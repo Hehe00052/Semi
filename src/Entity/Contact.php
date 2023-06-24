@@ -25,6 +25,9 @@ class Contact
     #[ORM\Column(length: 255)]
     private ?string $Message = null;
 
+    #[ORM\Column(length: 200, nullable: true)]
+    private ?string $Status = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Contact
     public function setMessage(string $Message): self
     {
         $this->Message = $Message;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->Status;
+    }
+
+    public function setStatus(?string $Status): self
+    {
+        $this->Status = $Status;
 
         return $this;
     }

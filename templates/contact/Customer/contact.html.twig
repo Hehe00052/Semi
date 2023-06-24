@@ -1,3 +1,4 @@
+{% form_theme form "bootstrap_5_layout.html.twig"%}
 <!DOCTYPE html>
 <html>
    <head>
@@ -16,7 +17,7 @@
       <!-- bootstrap css -->
       <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
       <!-- style css -->
-      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
       <!-- Responsive-->
       <link rel="stylesheet" href="css/responsive.css">
       <!-- fevicon -->
@@ -85,16 +86,24 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="mail_section_1">
-                        <input type="text" class="mail_text" placeholder="Your Name" name="Your Name">
-                        <input type="text" class="mail_text" placeholder="Your Email" name="Your Email">
-                        <input type="text" class="mail_text" placeholder="Your Phone" name="Your Phone">
-                        <textarea class="massage-bt" placeholder="Message" rows="5" id="comment" name="Massage"></textarea>
-                        <div class="send_bt"><a href="#">SEND</a></div>
+                        {{ form_start(form) }}
+                        {{ form_widget(form.Name, {'attr': {'class': 'mail_text', 'placeholder': 'Your Name'}}) }}
+                        {{ form_widget(form.Email, {'attr': {'class': 'mail_text', 'placeholder': 'Your Email'}}) }}
+                        {{ form_widget(form.Phone, {'attr': {'class': 'mail_text', 'placeholder': 'Your Phone'}}) }}
+                        {{ form_widget(form.Message, {'attr': {'class': 'mail_text', 'placeholder': 'Message'}}) }}     
+                       <div style="text-align: center">
+                           <input type="submit" value="SEND" class="btn btn-primary" style="font-size: 16px; display: inline-block; background-color: black; margin-top:20px; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;" />
+                           </a>
+                        </div>
+                        {{ form_end(form) }}
                      </div>
                   </div>
+            </div>
+         </div>
+
                   <div class="map_main">
                      <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France" width="250" height="500" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.6262856991!2d105.77487367442332!3d10.047665090060182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0880394d99315%3A0x2e86b25b92ad3e8a!2zNDEgxJAuIEPDoWNoIE3huqFuZyBUaMOhbmcgOCwgVGjhu5tpIELDrG5oLCBOaW5oIEtp4buBdSwgQ-G6p24gVGjGoSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1687602715013!5m2!1sen!2s" width="250" height="500" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
                      </div>
                   </div>
                </div>

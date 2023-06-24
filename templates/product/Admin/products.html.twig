@@ -1,15 +1,80 @@
-{% form_theme product_form "bootstrap_5_layout.html.twig"%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HEHEHEHE</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+  <style>
+    /* Add CSS for Bootstrap 5 classes */
+    /* Styling for the container */
+    .container {
+      margin-top: 50px;
+    }
 
-{% extends 'base.html.twig' %}
+    /* Styling for the form */
+    form {
+      margin-bottom: 20px;
+    }
 
-{% block title %}HEHEHEHE{% endblock %}
+    /* Styling for the submit button */
+    input[type="submit"] {
+      margin-top: 10px;
+    }
 
-{% block body %}
-{# <a href="{{path('app_logout')}}" class="btn btn-danger" >OUT</a> #}
-<div class="container">
-{{form_start(product_form)}}
-{{form_widget(product_form)}}
-<input type="submit" value="Submit" class="btn btn-primary" />
-{{form_end(product_form)}}
-</div>
-{% endblock %}
+    /* Additional custom styling */
+    /* Center the form horizontally */
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Increase the width of the form */
+    form {
+      max-width: 400px;
+    }
+
+    /* Add some padding to the form */
+    form > div {
+      padding: 10px;
+    }
+
+    /* Center the submit button */
+    input[type="submit"] {
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Center the title text */
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form action="{{ path('app_admin_add') }}" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="product_name">Product Name:</label>
+        <input type="text" id="name" name="name" class="form-control">
+      </div>
+      <div>
+        <label for="product_price">Product Price:</label>
+        <input type="text" id="price" name="price" class="form-control">
+      </div>
+      <div>
+        <label for="product_photo">Product Photo:</label>
+        <input type="file" id="photo" name="photo" class="form-control">
+      </div>
+      <div>
+        <label for="product_category">Product Category:</label>
+        <select id="cate" name="cate" class="form-control">
+          <option value="1">Rainy day</option>
+          <option value="2">Sunny day</option>
+        </select>
+      </div>
+      <div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List Product{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <div style="align-items: center">
+    <a href="{{path('app_admin_add')}}" class="btn btn-primary" >ADD</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Photo</td>
+                    <td>Category</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in data %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{product.getid()}}</td>
+                    <td>{{product.getName()}}</td>
+                    <td>{{product.getPrice()}}</td>
+                    <td>{{product.getCate()}}</td>
+                    <td><img src="{{asset('uploads/product/'~product.getPhoto())}}" height="150px"/></td>
+                    <td>
+                        <a href="{{path('app_edit_product',{'id':product.getId()})}}" class="btn btn-warning">Edit</a>
+                        <a href="javascript:delete123('{{path('app_delete_product',{'id':product.getId()})}}')" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>     
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+<script>
+    function delete123(url){
+        if(confirm("Go go go!"))
+        {
+            window.location.href = url;
+        }
+    }   
+</script>        
+{% endblock %}

@@ -14,6 +14,11 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class ContactController extends AbstractController
 {
+    public function __construct(private UrlGeneratorInterface $urlGenerator)
+    {
+
+    }
+
     #[Route('/contact', name: 'app_contact')]
     public function index(Request $req, EntityManagerInterface $connect): Response
     {
@@ -29,7 +34,18 @@ class ContactController extends AbstractController
             return new RedirectResponse($this->urlGenerator->generate('app_contact'));
         }
         return $this->render('contact/Customer/contact.html.twig', [
-            'product_form' => $form->createView(),
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/admin/contact', name: 'app_admin_request')]
+    public function list(Request $req, EntityManagerInterface $quer): Response
+    {
+        $quer = $quer->createQuery('SELECT contact FROM App\Entity\Contact contact');
+        $listproduct = $quer->getResult();
+
+        return $this->render('contact/admin/list.html.twig', [
+            'data' => $listproduct
         ]);
     }
 }

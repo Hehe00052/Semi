@@ -538,8 +538,8 @@ button {
 #main_slider .carousel-control-next:hover,
 #main_slider .carousel-control-prev:focus,
 #main_slider .carousel-control-prev:hover {
-    color: #fefefd;
-    background-color: #4a4949;
+    color: #11110e;
+    background-color: #f70000;
 }
 
 
@@ -1037,4 +1037,31 @@ textarea#comment.update_mail::placeholder {
 
 .margin_top90 {
     margin-top: 90px;
+}
+
+
+.send_bt {
+    width: 170px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact a {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #fefefd;
+    background-color: #d07d6b;
+    padding: 10px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    display: block;
+    font-weight: bold;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact a:hover {
+    color: #fefefd;
+    background-color: #4a4949;
 }

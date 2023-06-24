@@ -30,7 +30,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/product', name: 'app_add_product')]
+    #[Route('/admin/product', name: 'app_admin_add')]
     public function add(Request $req, EntityManagerInterface $connect, FileUploader $uploader): Response
     {
         $product = new Product();
