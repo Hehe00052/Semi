@@ -36,12 +36,12 @@ class ProductController extends AbstractController
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($req);
-
+ 
         if($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
 
-            $file = $form->get("Photo")->getData();
+            $file = $form->get("photo")->getData();
             $fileName = $uploader->upload($file);
             $data->setPhoto($fileName);
 
@@ -54,4 +54,53 @@ class ProductController extends AbstractController
             'product_form' => $form->createView(),
         ]);
     }
+
+    #[Route('admin/product/list', name: 'app_product_list')]
+    public function list(Request $req, EntityManagerInterface $quer): Response
+    {
+        $quer = $quer->createQuery('SELECT product FROM App\Entity\Product product');
+        $listproduct = $quer->getResult();
+
+        return $this->render('product/admin/list.html.twig', [
+            'data' => $listproduct
+        ]);
+    }
+
+    #[Route('/product{id}', name: 'app_edit_product')]
+    public function edit(Request $req, int $id, EntityManagerInterface $connect, FileUploader $uploader): Response
+    {
+        $product = $connect->find(Product::class,$id);
+        $form = $this ->createForm(ProductType::class,$product);
+        $form->handleRequest($req);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $data = $form->getData();
+
+            $file = $form->get("Photo")->getData();
+            if ($file)
+            {
+                $fileName = $uploader->upload($file);
+                $data->setPhoto($fileName);
+            } 
+
+            $product->setName($data->getName())->setPrice($data->getPrice());
+            $connect->flush();
+            return new RedirectResponse($this->urlGenerator->generate('app_product_list'));
+        }
+
+        return $this->render('product/index.html.twig', [
+            'product_form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/product{id}/delete', name: 'app_delete_product')]
+    public function delete(Request $req, int $id, EntityManagerInterface $connect): Response
+    {
+        $product = $connect->find(Product::class,$id);
+        $connect->remove($product);
+        $connect->flush();
+        return new RedirectResponse($this->urlGenerator->generate('app_product_list'));
+    }
+
 }

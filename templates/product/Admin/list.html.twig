@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}List Product{% endblock %}
+{% block title %}ListHehe{% endblock %}
 
 {% block body %}
     <div class="container">
     <div style="align-items: center">
     <a href="{{path('app_admin_add')}}" class="btn btn-primary" >ADD</a>
+    
         <table class="table">
             <thead>
                 <tr>
@@ -14,7 +15,6 @@
                     <td>Name</td>
                     <td>Price</td>
                     <td>Photo</td>
-                    <td>Category</td>
                     <td>Action</td>
                 </tr>
             </thead>
@@ -25,7 +25,6 @@
                     <td>{{product.getid()}}</td>
                     <td>{{product.getName()}}</td>
                     <td>{{product.getPrice()}}</td>
-                    <td>{{product.getCate()}}</td>
                     <td><img src="{{asset('uploads/product/'~product.getPhoto())}}" height="150px"/></td>
                     <td>
                         <a href="{{path('app_edit_product',{'id':product.getId()})}}" class="btn btn-warning">Edit</a>

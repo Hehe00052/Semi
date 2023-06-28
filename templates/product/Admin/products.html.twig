@@ -51,30 +51,32 @@
 </head>
 <body>
   <div class="container">
-    <form action="{{ path('app_admin_add') }}" method="POST" enctype="multipart/form-data">
+      {{ form_start(product_form) }}
       <div>
-        <label for="product_name">Product Name:</label>
-        <input type="text" id="name" name="name" class="form-control">
+        <label for="product_name">{{field_label(product_form.name)}}</label>
+        <input type="text" value="{{field_value(product_form.name)}}" name="{{field_name(product_form.name)}}" class="form-control">
       </div>
       <div>
-        <label for="product_price">Product Price:</label>
-        <input type="text" id="price" name="price" class="form-control">
+        <label for="product_price">{{field_label(product_form.price)}}</label>
+        <input type="text"  value="{{field_value(product_form.price)}}" name="{{field_name(product_form.price)}}" class="form-control">
+      </div>
+            <div>
+        <label for="product_price">{{field_label(product_form.photo)}}</label>
+        <input type="file"  value="{{field_value(product_form.photo)}}" name="{{field_name(product_form.photo)}}" class="form-control">
       </div>
       <div>
-        <label for="product_photo">Product Photo:</label>
-        <input type="file" id="photo" name="photo" class="form-control">
-      </div>
-      <div>
-        <label for="product_category">Product Category:</label>
-        <select id="cate" name="cate" class="form-control">
-          <option value="1">Rainy day</option>
-          <option value="2">Sunny day</option>
+        <label for="product_category">{{field_label(product_form.cate)}}</label>
+        <select name="{{field_name(product_form.cate)}}" class="form-control">
+          {% for label, value in field_choices(product_form.cate) %}
+            <option value="{{value}}">{{label}}</option>
+          {% endfor %}
         </select>
       </div>
       <div>
         <input type="submit" value="Submit" class="btn btn-primary">
       </div>
-    </form>
+    
+    {{ form_end(product_form) }}
   </div>
 </body>
 </html>
