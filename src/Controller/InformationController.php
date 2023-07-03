@@ -24,4 +24,11 @@ class InformationController extends AbstractController
         ]);
     }
 
+    #[Route('/home', name: 'app_home')]
+    public function home(): Response
+    {
+        return $this->render('information/home.html.twig', [
+            'controller_name' => 'InformationController',
+        ]);
+    }
 }
