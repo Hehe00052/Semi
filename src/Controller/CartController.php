@@ -23,7 +23,7 @@ class CartController extends AbstractController
         $session = $request->getSession();
         $cart_manager = $session->get('cart', new CartManager());
         return $this->render('cart/index.html.twig', [
-            "cart"=>$cart_manager->getItems()
+            "cart_manager"=>$cart_manager
         ]);
     }
 

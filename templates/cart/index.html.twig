@@ -15,26 +15,31 @@
 				<th>Total</th>
 				<th>Action</th>
 			</tr>
-			{% for item in cart %}
+			{% for item in cart_manager.items%}
 				<tr>
 					<form action="{{path('app_cart_update')}}" method="POST">
 						<td>{{loop.index}}</td>
 						<td>{{item.product.id}}
 							-
 							{{item.product.name}}</td>
-						<td>{{item.product.price}}</td>
+						<td>{{item.product.price}}$</td>
 						<td>
                             <input type='hidden' value='{{item.product.id}}' name='product_id'/>
 							<input type='number' onchange="this.form.submit()" value='{{item.quantity}}' min="1" name='qty'/>
 						</td>
-						<td>{{item.amount}}</td>
+						<td>{{item.amount}}$</td>
 						<td>
 							<a href="{{path('app_cart_remove',{'product_id':item.product.id})}}">Remove</a>
 						</td>
 					</form>
 				</tr>
 			{% endfor %}
+			<tr>
+				<td colspans="5">SUM</td>
+				<td>{{cart_manager.amount}}$</td>
+			</tr>
 		</table>
+		<a href="{{path('app_order')}}">Check out</a>
 	</div>
 {% endblock %}
 {% block javascripts %}
