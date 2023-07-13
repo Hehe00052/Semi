@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
 {
-    #[Route(path: '/login', name: 'app_login')]
+    #[Route(path: 'admin/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if ($this->getUser()) {
@@ -29,12 +29,12 @@ class UserController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-    #[Route(path: 'admin/login', name: 'app_login4admin')]
+    #[Route(path: '/login', name: 'app_login4admin')]
     public function loginadmin(AuthenticationUtils $authenticationUtils, Request $req, EntityManagerInterface $quer): Response
     {
-       if ($this->getUser()) {
-            return $this->redirectToRoute('app_product_list');
-         }
+    //    if ($this->getUser()) {
+    //         return $this->redirectToRoute('app_product_list');
+    //      }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
