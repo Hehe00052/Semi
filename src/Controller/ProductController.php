@@ -23,10 +23,13 @@ class ProductController extends AbstractController
     }
 
     #[Route('/product', name: 'app_product')]
-    public function index(): Response
+    public function userlist(Request $req, EntityManagerInterface $quer): Response
     {
+        $quer = $quer->createQuery('SELECT product FROM App\Entity\Product product');
+        $listproduct = $quer->getResult();
+
         return $this->render('product/Customer/products.html.twig', [
-            'controller_name' => 'ProductController',
+            'data' => $listproduct
         ]);
     }
 
