@@ -27,6 +27,10 @@ class OrderItem
     #[ORM\Column]
     private ?float $Price = null;
 
+    public function __toString(){
+        return $this->OrderID;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -7,6 +7,7 @@ use App\Entity\Order;
 use App\Entity\OrderItem;
 use App\Entity\Product;
 use App\Form\OrderType;
+use App\Form\OrderItemType;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -64,6 +65,38 @@ class OrderController extends AbstractController
             'order_form' => $form->createView(),
             'cart_manager' => $cart_manager,
             'message' => $message
+        ]);
+    }
+
+    #[Route('admin/order/list', name: 'app_order_list')]
+    public function list(Request $req, EntityManagerInterface $quer): Response
+    {
+        $quer = $quer->createQuery('SELECT ord FROM App\Entity\Order ord');
+        $listorder = $quer->getResult();
+
+        return $this->render('order/orderlist.html.twig', [
+            'data' => $listorder
+        ]);
+    }
+    
+    #[Route('admin/itemlist', name: 'itemlist')]
+    public function item(Request $req, EntityManagerInterface $quer): Response
+    {
+        $quer = $quer->createQuery('SELECT item FROM App\Entity\OrderItem item');
+        $listitem = $quer->getResult();
+        
+        return $this->render('order/orderitem.html.twig', [
+            'data' => $listitem
+        ]);
+    }
+
+    #[Route('admin/order/{id}', name: 'app_orderitem_view')]
+    public function vieworderitem(Request $req, int $id,  EntityManagerInterface $connect): Response
+    {
+        $ord = $connect->find(Order::class,$id);
+        $listproduct = $ord->getOrderItems();
+        return $this->render('order/orderitem.html.twig', [
+            'data' => $listproduct
         ]);
     }
 }
