@@ -4,11 +4,9 @@
 
 {% block body %}
     <div class="container">
-        <a href="{{path('app_product')}}" class='btn btn-primary'>Add</a>
         <table class="table">
             <thead>
                 <tr>
-                    <td>STT</td>
                     <td>Mã SP</td>
                     <td>Hình ảnh</td>
                     <td>Tên SP</td>
@@ -19,15 +17,11 @@
             <tbody>
                 {% for sp in data %}
                     <tr>
-                        <td>{{loop.index}}</td>
                         <td>{{sp.getId()}}</td>
                         <td><img src="{{asset('uploads/product/' ~ sp.getPhoto())}}" height="150" /></td>
                         <td>{{sp.getName()}}</td>
                         <td>{{sp.getPrice()}}</td>
                         <td>
-                            <a href="{{path('app_edit_product',{'id':sp.getId()})}}" class="btn btn-warning">Edit</a>
-                            <a href="javascript:deletesp('{{path('app_delete_product',{'id':sp.getId()})}}')" class="btn btn-danger">Delete</a>
-                            <form>
                             <button type="submit" formmethod="post" formaction="{{path('app_cart_add',{'product_id':sp.getId()})}}">Add to cart</button>
                             </form>
                         </td>
