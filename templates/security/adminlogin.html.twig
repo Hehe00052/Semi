@@ -5,14 +5,9 @@
 {% block body %}
 <body>
     <header>
-        <h2 class="logo"> LOGO </h2>
+        <h2 class="logo"> Se Mi </h2>
             <nav class="navigation">
-                <a href="#">Home</a>
-                <a href="#">List of Products</a>
-                <a href="#">Services</a>
-                <a href="#">Contact</a>
-            
-                <a href="{{path('app_login')}}" class="btnLogin-popup">Login</a>
+                
             </nav>
     </header>
 </body>
@@ -57,7 +52,7 @@
     </button>
     <div class="login-register"> 
         <p>Don't have an account?  
-            <a href="{{ path('app_register') }}" class="register-link"> Register </a> 
+            <a href="{{ path('app_admin_register') }}" class="register-link"> Register </a> 
         </p>
     </div>
 </form>
