@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -24,6 +26,18 @@ class Product
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $Cate = null;
+
+    #[ORM\OneToMany(mappedBy: 'Item', targetEntity: OrderItem::class)]
+    private Collection $orderItems;
+
+    public function __construct()
+    {
+        $this->orderItems = new ArrayCollection();
+    }
+
+    public function __toString(){
+        return $this->id;
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +88,36 @@ class Product
     public function setCate(?Category $Cate): self
     {
         $this->Cate = $Cate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderItem>
+     */
+    public function getOrderItems(): Collection
+    {
+        return $this->orderItems;
+    }
+
+    public function addOrderItem(OrderItem $orderItem): self
+    {
+        if (!$this->orderItems->contains($orderItem)) {
+            $this->orderItems->add($orderItem);
+            $orderItem->setItem($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderItem(OrderItem $orderItem): self
+    {
+        if ($this->orderItems->removeElement($orderItem)) {
+            // set the owning side to null (unless already changed)
+            if ($orderItem->getItem() === $this) {
+                $orderItem->setItem(null);
+            }
+        }
 
         return $this;
     }
