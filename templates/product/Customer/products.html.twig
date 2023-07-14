@@ -2,8 +2,6 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/templatemo-sixteen.css') }}">
-
-
 {% endblock %}
 
 
@@ -18,7 +16,7 @@
                         <img src="{{ asset('uploads/product/' ~ sp.getPhoto()) }}" alt="">
                         <h3>{{ sp.getName() }}</h3>
                         <div class="price">{{ sp.getPrice() }}</div>
-                        <button type="submit" class="btn" name="add_to_cart">Add to cart</button>
+                        <button type="submit" class="btn" name="add_to_cart" style="line-height:3rem; font-size:1.7rem">Add to cart</button>
                     </div>
                 </form>
                 {% endfor %}
@@ -26,7 +24,7 @@
         </section>
     </div>
 {% endblock %}
-
+{% include "footer.html.twig" %}
 {% block javascripts %}
     <script>
         function deletesp(url){
@@ -36,3 +34,4 @@
         }
     </script>
 {% endblock %}
+
