@@ -23,10 +23,13 @@ class ProductController extends AbstractController
     }
 
     #[Route('/product', name: 'app_product')]
-    public function index(): Response
+    public function userlist(Request $req, EntityManagerInterface $quer): Response
     {
+        $quer = $quer->createQuery('SELECT product FROM App\Entity\Product product');
+        $listproduct = $quer->getResult();
+
         return $this->render('product/Customer/products.html.twig', [
-            'controller_name' => 'ProductController',
+            'data' => $listproduct
         ]);
     }
 
@@ -77,7 +80,7 @@ class ProductController extends AbstractController
         {
             $data = $form->getData();
 
-            $file = $form->get("Photo")->getData();
+            $file = $form->get("photo")->getData();
             if ($file)
             {
                 $fileName = $uploader->upload($file);
@@ -89,7 +92,7 @@ class ProductController extends AbstractController
             return new RedirectResponse($this->urlGenerator->generate('app_product_list'));
         }
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/admin/products.html.twig', [
             'product_form' => $form->createView(),
         ]);
     }

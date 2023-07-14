@@ -38,7 +38,7 @@ class ContactController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/contact', name: 'app_admin_request')]
+    #[Route('/admin/needhelp', name: 'app_admin_request')]
     public function list(Request $req, EntityManagerInterface $quer): Response
     {
         $quer = $quer->createQuery('SELECT contact FROM App\Entity\Contact contact');
