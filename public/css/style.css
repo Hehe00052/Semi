@@ -280,6 +280,9 @@ button {
     width: 210px;
 }
 
+html{
+    background-color: blue;
+}
 .login_bt ul {
     margin: 0px;
     padding: 0px;
