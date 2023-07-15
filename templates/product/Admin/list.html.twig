@@ -1,32 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}List of Product{% endblock %}
-
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/style2.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">{% endblock %}
 {% block body %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <div class="container">
     <div style="align-items: center">
     <a href="{{path('app_admin_add')}}" class="btn btn-primary" >ADD</a>
-    
+<section class="display-product-table">
         <table class="table">
             <thead>
-                <tr>
                     <td>STT</td>
                     <td>ID</td>
                     <td>Name</td>
                     <td>Price</td>
                     <td>Photo</td>
                     <td>Action</td>
-                </tr>
             </thead>
             <tbody>
                 {% for product in data %}
                 <tr>
                     <td>{{loop.index}}</td>
                     <td>{{product.getid()}}</td>
+                    <td><img src="{{asset('uploads/product/'~product.getPhoto())}}" height="150px"/></td>
                     <td>{{product.getName()}}</td>
                     <td>{{product.getPrice()}}</td>
-                    <td><img src="{{asset('uploads/product/'~product.getPhoto())}}" height="150px"/></td>
                     <td>
                         <a href="{{path('app_edit_product',{'id':product.getId()})}}" class="btn btn-warning">Edit</a>
                         <a href="javascript:delete123('{{path('app_delete_product',{'id':product.getId()})}}')" class="btn btn-danger">Delete</a>
