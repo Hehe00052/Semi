@@ -4,28 +4,43 @@
     <link rel="stylesheet" href="{{ asset('css/templatemo-sixteen.css') }}">
 {% endblock %}
 
-
 {% block body %}
     <div class="container">
         <section class="products">
             <h1 class="heading">ALL PRODUCTS</h1>
             <div class="box-container">
-                {% for sp in data %}
-                <form action="{{ path('app_cart_add', {'product_id': sp.getId()}) }}" method="post">
-                    <div class="box">
-                        <div class="image-container">
-                        <img src="{{ asset('uploads/product/' ~ sp.getPhoto()) }}" alt="">
+                {% set productsPerPage = 9 %}
+                {% set totalProducts = data|length %}
+                {% set totalPages = (totalProducts / productsPerPage)|round(0, 'ceil') %}
+                {% set currentPage = app.request.query.get('page', 1) %}
+                {% set start = (currentPage - 1) * productsPerPage %}
+                {% set end = start + productsPerPage %}
+                {% for sp in data[start:end] %}
+                    <form action="{{ path('app_cart_add', {'product_id': sp.getId()}) }}" method="post">
+                        <div class="box">
+                            <div class="image-container">
+                                <img src="{{ asset('uploads/product/' ~ sp.getPhoto()) }}" alt="">
+                            </div>
+                            <h3>{{ sp.getName() }}</h3>
+                            <div class="price">{{ sp.getPrice() }}$</div>
+                            <button type="submit" class="btn" name="add_to_cart" style="background-color:black;line-height:3rem; font-size:1.7rem">Add to cart</button>
                         </div>
-                        <h3>{{ sp.getName() }}</h3>
-                        <div class="price">{{ sp.getPrice() }}$</div>
-                        <button type="submit" class="btn" name="add_to_cart" style="line-height:3rem; font-size:1.7rem">Add to cart</button>
-                    </div>
-                </form>
+                    </form>
                 {% endfor %}
             </div>
+            <nav>
+                <ul class="pagination">
+                    {% for page in 1..totalPages %}
+                        <li class="page-item {% if currentPage == page %}active{% endif %}">
+                            <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
         </section>
     </div>
 {% endblock %}
+
 {% include "footer.html.twig" %}
 {% block javascripts %}
     <script>

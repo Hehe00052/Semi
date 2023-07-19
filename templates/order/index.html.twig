@@ -1,14 +1,35 @@
 {% form_theme order_form 'bootstrap_4_layout.html.twig' %}
-{% extends 'base.html.twig' %}
+{% include "header.html.twig" %}
 
-{% block title %}Cart manager
+{% block title %}Order Checkout
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+  .button {
+	  margin-left:29.5rem;
+	  margin-bottom:20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .button:hover {
+    background-color: gray;
+    color: black;
+  }
+</style>
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	<div class="container" style="margin-top: 80px;margin-bottom:80px">
         {{form_start(order_form)}}
             {{form_widget(order_form)}}
-            <input type="submit" value="Confirm" class="btn btn-primary" />
+            <input type="submit" value="Confirm" class="button" />
         {{form_end(order_form)}}
 		<table class="table">
 			<tr>
@@ -38,6 +59,7 @@
 		</table>
 	</div>
 {% endblock %}
+{% include "footer.html.twig" %}
 {% block javascripts %}
 {% if message is not empty %}
     <script> alert("{{message}}");</script>
