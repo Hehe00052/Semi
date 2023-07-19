@@ -17,11 +17,6 @@
       margin-bottom: 20px;
     }
 
-    /* Styling for the submit button */
-    input[type="submit"] {
-      margin-top: 10px;
-    }
-
     /* Additional custom styling */
     /* Center the form horizontally */
     .container {
@@ -37,12 +32,6 @@
     /* Add some padding to the form */
     form > div {
       padding: 10px;
-    }
-
-    /* Center the submit button */
-    input[type="submit"] {
-      display: block;
-      margin: 0 auto;
     }
 
     /* Center the title text */
@@ -75,12 +64,21 @@
           {% endfor %}
         </select>
       </div>
-      <div>
+      <div style="margin-left: 5rem">
         <input type="submit" value="Submit" class="btn btn-primary">
+        <input type="button" value="Clear" onclick="clearForm()" class="btn btn-secondary">
       </div>
     
     {{ form_end(product_form) }}
   </div>
  </body>
 </html>
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+    function clearForm() {
+      document.querySelector("form").reset();
+    }
+  </script>
 {% endblock %}
