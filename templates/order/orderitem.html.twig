@@ -11,8 +11,6 @@
             <thead>
                 <tr>
                     <td>Index</td>
-                    <td>ID</td>
-                    <td>Order ID</td>
                     <td>Item ID</td>
                     <td>Quantity</td>
                     <td>Price</td>
@@ -22,11 +20,9 @@
                 {% for item in data %}
                 <tr>
                     <td>{{loop.index}}</td>
-                    <td>{{item.getId()}}</td>
-                    <td>{{item.getOrderID()}}</td>
-                    <td>{{item.getItem()}}</td>
+                    <td>{{item.getItem().getName()}}</td>
                     <td>{{item.getQuantity()}}</td>
-                    <td>{{item.getPrice()}}</td>
+                    <td>{{item.getPrice()}}$</td>
                 </tr>     
                 {% endfor %}
             </tbody>
@@ -37,7 +33,7 @@
 {% block javascripts %}
 <script>
     function delete123(url){
-        if(confirm("Go go go!"))
+        if(confirm("Sure?!"))
         {
             window.location.href = url;
         }

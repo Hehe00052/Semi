@@ -45,16 +45,16 @@
                     <td>{{item.product.id}}
                         -
                         {{item.product.name}}</td>
-                    <td>{{item.product.price}}</td>
+                    <td>{{item.product.price}}$</td>
                     <td>
                         {{item.quantity}}
                     </td>
-                    <td>{{item.amount}}</td>
+                    <td>{{item.amount}}$</td>
 				</tr>
 			{% endfor %}
 			<tr>
-				<td colspan='4' class='text-center'>SUM</td>
-				<td>{{cart_manager.amount}}</td>
+				<td colspan='4' >SUM</td>
+				<td>{{cart_manager.amount}}$</td>
 			</tr>
 		</table>
 	</div>

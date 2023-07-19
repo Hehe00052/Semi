@@ -106,4 +106,14 @@ class ProductController extends AbstractController
         return new RedirectResponse($this->urlGenerator->generate('app_product_list'));
     }
 
+    #[Route('/detailproduct{id}', name: 'app_product_detail')]
+    public function detail(Request $req, int $id,EntityManagerInterface $quer): Response
+    {
+        $quer = $quer->createQuery("SELECT product FROM App\Entity\Product product WHERE product.id = " . $id);
+        $listproduct = $quer->getResult();
+
+        return $this->render('product/Customer/detail.html.twig', [
+            'data' => $listproduct
+        ]);
+    }
 }

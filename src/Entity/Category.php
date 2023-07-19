@@ -22,6 +22,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'Cate', targetEntity: Product::class)]
     private Collection $products;
 
+    #[ORM\Column(length: 244, nullable: true)]
+    private ?string $Photo = null;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -70,6 +73,18 @@ class Category
                 $product->setCate(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->Photo;
+    }
+
+    public function setPhoto(?string $Photo): static
+    {
+        $this->Photo = $Photo;
 
         return $this;
     }
