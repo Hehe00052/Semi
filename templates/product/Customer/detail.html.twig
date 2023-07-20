@@ -57,8 +57,10 @@
                        <th style="background-color: black; color: white; font-weight: bold;">Price</th>
                        <td style="vertical-align: middle;">{{ product.getPrice() }}$</td>
                     </tr>
+                    <tr>
                     <form action="{{ path('app_cart_add', {'product_id': product.getId()}) }}" method="post">
-                            <button type="submit" class="btn" name="add_to_cart" style="background-color:red;color: white; margin-bottom: 10px;margin-left:950px;line-height:3rem; font-size:1.7rem">Add to cart</button> 
+                    <button type="submit" class="btn" name="add_to_cart" style="background-color:red;color: white; margin-bottom: 10px;line-height:3rem; font-size:1.7rem">Add to cart</button> </form>
+                    </tr>
                     </form>
                     {% endfor %}
                 </tbody>
