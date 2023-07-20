@@ -81,7 +81,6 @@
  </style>   
     <div class="container">
     <div style="align-items: center">
-    <a href="{{path('app_admin_add')}}" class="btn btn-primary" >ADD</a>
     <section class="display-product-table">
         <table class="table table-bordered" style="border">
             <thead>
@@ -103,12 +102,13 @@
                     <td style="vertical-align: middle;">{{order.getid()}}</td>
                     <td style="vertical-align: middle;">{{order.getCustomerName()}}</td>
                     <td style="vertical-align: middle;">{{order.getCustomerAddress()}}</td>
-					<td style="vertical-align: middle;">{{order.getCustomerPhone()}}</td>
-					<td style="vertical-align: middle;">{{order.getTotalPrice()}}$</td>
-					<td style="vertical-align: middle;">{{order.isStatus()}}</td>
+					          <td style="vertical-align: middle;">{{order.getCustomerPhone()}}</td>
+					          <td style="vertical-align: middle;">{{order.getTotalPrice()}}$</td>
+					          <td style="vertical-align: middle;">{% if order.isStatus() == 1 %}done{% else %}pending{% endif %}</td>
+                     
                     <td style="vertical-align: middle;">
-                    <a href="{{path('app_orderitem_view',{'id':order.getId()})}}" class="btn btn-warning" style="font-weight:bold">More detail</a>
-                    <a><button type="button" class="btn btn-dark">Change Status</button></a></td>
+                    <a href="{{path('app_orderitem_view',{'id':order.getId()})}}" class="btn btn-dark" style="font-weight:bold">More detail</a>
+                    <a href="javascript:confirmch('{{path('app_mark',{'id':order.getId()})}}')" class="btn btn-danger"><i class="fas fa-trash"></i> Mark as Done</a>
                 </tr>     
                 {% endfor %}
             </tbody>
@@ -119,7 +119,7 @@
 {% endblock %}
 {% block javascripts %}
 <script>
-    function delete123(url){
+    function confirmch(url){
         if(confirm("Are you sure?!"))
         {
             window.location.href = url;

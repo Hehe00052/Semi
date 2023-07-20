@@ -1,4 +1,4 @@
-{% include "header.html.twig" %}
+{% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/templatemo-sixteen.css') }}">
@@ -75,7 +75,6 @@
     </div>
 {% endblock %}
 
-{% include "footer.html.twig" %}
 {% block javascripts %}
     <script>
         function deletesp(url){

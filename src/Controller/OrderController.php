@@ -99,4 +99,13 @@ class OrderController extends AbstractController
             'data' => $listproduct
         ]);
     }
+
+    #[Route('change{id}', name: 'app_mark')]
+    public function change(Request $req, int $id,  EntityManagerInterface $connect): Response
+    {
+        $product = $connect->find(Order::class,$id);
+        $product->setStatus(1);
+        $connect->flush();
+            return new RedirectResponse($this->urlGenerator->generate('app_order_list'));
+    }
 }
