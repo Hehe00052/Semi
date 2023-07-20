@@ -87,7 +87,7 @@ class ProductController extends AbstractController
                 $data->setPhoto($fileName);
             } 
 
-            $product->setName($data->getName())->setPrice($data->getPrice());
+            $product->setName($data->getName())->setPrice($data->getPrice())->setDescription($data->getDescription());
             $connect->flush();
             return new RedirectResponse($this->urlGenerator->generate('app_product_list'));
         }

@@ -42,10 +42,6 @@
                 <tbody>
                     {% for product in data %}
                     <tr>
-                       <th style="background-color: black; color: white; font-weight: bold;">ID</th>
-                       <td style="vertical-align: middle;">{{ product.getid() }}</td>
-                    </tr>
-                    <tr>
                        <th style="background-color: black; color: white; font-weight: bold;">Image</th>
                        <td style="vertical-align: middle;"><img src="{{ asset('uploads/product/' ~ product.getPhoto()) }}" class="product-image" /></td>
                     </tr>
@@ -56,6 +52,10 @@
                     <tr>
                        <th style="background-color: black; color: white; font-weight: bold;">Price</th>
                        <td style="vertical-align: middle;">{{ product.getPrice() }}$</td>
+                    </tr>
+                    <tr>
+                       <th style="background-color: black; color: white; font-weight: bold;">Description</th>
+                       <td style="vertical-align: middle;">{{ product.getDescription() }}</td>
                     </tr>
                     <tr>
                     <form action="{{ path('app_cart_add', {'product_id': product.getId()}) }}" method="post">

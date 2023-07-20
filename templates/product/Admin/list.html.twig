@@ -95,6 +95,7 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Description</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -106,6 +107,7 @@
                         <td style="vertical-align: middle;"><img src="{{ asset('uploads/product/' ~ product.getPhoto()) }}" class="product-image" /></td>
                         <td style="vertical-align: middle;">{{product.getName()}}</td>
                         <td style="vertical-align: middle;">{{product.getPrice()}}$</td>
+                        <td style="vertical-align: middle;">{{product.getDescription()}}</td>
                         <td>
                             <a href="javascript:delete123('{{path('app_delete_product',{'id':product.getId()})}}')" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
                             <a href="{{path('app_edit_product',{'id':product.getId()})}}" class="btn btn-warning"> <i class="fas fa-edit"></i>Update</a>
