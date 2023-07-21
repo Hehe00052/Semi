@@ -33,7 +33,7 @@
         {{form_end(order_form)}}
 		<table class="table">
 			<tr>
-				<th>STT</th>
+				<th>Index</th>
 				<th>Product</th>
 				<th>Price</th>
 				<th>Quantity</th>
@@ -42,8 +42,7 @@
 			{% for item in cart_manager.items %}
 				<tr>
                     <td>{{loop.index}}</td>
-                    <td>{{item.product.id}}
-                        -
+                    <td>
                         {{item.product.name}}</td>
                     <td>{{item.product.price}}$</td>
                     <td>

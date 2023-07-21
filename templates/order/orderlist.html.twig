@@ -88,8 +88,8 @@
                     <th>Index</th>
                     <th>ID</th>
                     <th>Customer Name</th>
-					<th>Customer Address</th>
-					<th>Customer Phone</th>
+					          <th >Customer Address</th>
+					          <th>Customer Phone</th>
                     <th>Total Price</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -107,8 +107,8 @@
 					          <td style="vertical-align: middle;">{% if order.isStatus() == 1 %}done{% else %}pending{% endif %}</td>
                      
                     <td style="vertical-align: middle;">
-                    <a href="{{path('app_orderitem_view',{'id':order.getId()})}}" class="btn btn-dark" style="font-weight:bold">More detail</a>
-                    <a href="javascript:confirmch('{{path('app_mark',{'id':order.getId()})}}')" class="btn btn-danger"><i class="fas fa-trash"></i> Mark as Done</a>
+                    <a href="{{path('app_orderitem_view',{'id':order.getId()})}}" class="btn btn-dark" style="font-weight:bold">Detail</a>
+                    <a href="javascript:confirmch('{{path('app_mark',{'id':order.getId()})}}')" class="btn btn-danger"><i class="fas fa-trash"></i> Done</a>
                 </tr>     
                 {% endfor %}
             </tbody>
