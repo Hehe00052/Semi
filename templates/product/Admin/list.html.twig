@@ -75,6 +75,38 @@
       background-color: red;
       color: #ececec;
     }
+ .pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline-block;
+  margin-top:20px;
+}
+
+.pagination li.active {
+  font-weight: bold;
+}
+
+.pagination li a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.pagination li a:hover {
+  background-color: gray;
+  color: black;
+}
 
     .btn.btn-warning {
       background-color: orange;
@@ -100,7 +132,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for product in data %}
+                {% set productsPerPage = 5 %}
+                {% set totalProducts = data|length %}
+                {% set totalPages = (totalProducts / productsPerPage)|round(0, 'ceil') %}
+                {% set currentPage = app.request.query.get('page', 1) %}
+                {% set start = (currentPage - 1) * productsPerPage %}
+                {% set end = start + productsPerPage %}
+                {% for product in data[start:end] %}
                     <tr>
                         <td style="vertical-align: middle;">{{ loop.index }}</td>
                         <td style="vertical-align: middle;">{{product.getid()}}</td>
@@ -116,6 +154,15 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination">
+                    {% for page in 1..totalPages %}
+                        <li class="pagination pagination-lg {% if currentPage == page %}active{% endif %}" style="background-color:black;">
+                            <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
         </section>
     </div>
 </div>

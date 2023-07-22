@@ -4,7 +4,7 @@
 
 {% block body %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
- <style>
+<style>
    .display-product-table table {
       width: 100%;
       text-align: center;
@@ -78,52 +78,75 @@
       background-color: orange;
       color: #ececec;
     }
- </style>   
-    <div class="container">
+</style>
+
+<div class="container">
     <div style="align-items: center">
-    <section class="display-product-table">
-        <table class="table table-bordered" style="border">
-            <thead>
-                <tr>
-                    <th>Index</th>
-                    <th>ID</th>
-                    <th>Customer Name</th>
-					          <th >Customer Address</th>
-					          <th>Customer Phone</th>
-                    <th>Total Price</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for order in data %}
-                <tr>
-                    <td style="vertical-align: middle;">{{loop.index}}</td>
-                    <td style="vertical-align: middle;">{{order.getid()}}</td>
-                    <td style="vertical-align: middle;">{{order.getCustomerName()}}</td>
-                    <td style="vertical-align: middle;">{{order.getCustomerAddress()}}</td>
-					          <td style="vertical-align: middle;">{{order.getCustomerPhone()}}</td>
-					          <td style="vertical-align: middle;">{{order.getTotalPrice()}}$</td>
-					          <td style="vertical-align: middle;">{% if order.isStatus() == 1 %}done{% else %}pending{% endif %}</td>
-                     
-                    <td style="vertical-align: middle;">
-                    <a href="{{path('app_orderitem_view',{'id':order.getId()})}}" class="btn btn-dark" style="font-weight:bold">Detail</a>
-                    <a href="javascript:confirmch('{{path('app_mark',{'id':order.getId()})}}')" class="btn btn-danger"><i class="fas fa-trash"></i> Done</a>
-                </tr>     
+        <section class="display-product-table">
+            <table class="table table-bordered" style="border">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>ID</th>
+                        <th>Customer Name</th>
+                        <th>Customer Address</th>
+                        <th>Customer Phone</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set productsPerPage = 5 %}
+                    {% set totalProducts = data|length %}
+                    {% set totalPages = (totalProducts / productsPerPage)|round(0,"ceil") %}
+                    {% set currentPage = app.request.query.get('page', 1) %}
+                    {% set start = (currentPage - 1) * productsPerPage %}
+                    {% set end = start + productsPerPage %}
+                    {% set sortedData = data|sort((a, b) => a.isStatus() == 1 ? 1 : -1) %}
+
+                    {% for order in sortedData[start:end] %}
+                    <tr>
+                        <td style="vertical-align: middle;">{{ loop.index }}</td>
+                        <td style="vertical-align: middle;">{{ order.getid() }}</td>
+                        <td style="vertical-align: middle;">{{ order.getCustomerName() }}</td>
+                        <td style="vertical-align: middle;">{{ order.getCustomerAddress() }}</td>
+                        <td style="vertical-align: middle;">{{ order.getCustomerPhone() }}</td>
+                        <td style="vertical-align: middle;">{{ order.getTotalPrice() }}$</td>
+                        <td style="vertical-align: middle;">
+                            {% if order.isStatus() == 1 %}
+                            done
+                            {% else %}
+                            pending
+                            {% endif %}
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <a href="{{ path('app_orderitem_view', {'id': order.getId()}) }}" class="btn btn-dark" style="font-weight: bold">Detail</a>
+                            <a href="javascript:confirmch('{{ path('app_mark', {'id': order.getId()}) }}')" class="btn btn-danger"><i class="fas fa-trash"></i> Done</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <ul class="pagination">
+                {% for page in 1..totalPages %}
+                    <li class="page-item {% if currentPage == page %}active{% endif %}">
+                        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                    </li>
                 {% endfor %}
-            </tbody>
-        </table>
-        </section>  
+            </ul>
+        </section>
     </div>
-    </div>
+</div>
+
 {% endblock %}
+
 {% block javascripts %}
 <script>
-    function confirmch(url){
-        if(confirm("Are you sure?!"))
-        {
+    function confirmch(url) {
+        if (confirm("Are you sure?!")) {
             window.location.href = url;
         }
-    }   
-</script>        
+    }
+</script>
 {% endblock %}
