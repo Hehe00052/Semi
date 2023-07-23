@@ -1,0 +1,18 @@
+{% include "header.html.twig" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <h1>Hello {{ user.username }}!</h1>
+    <p>First Name: {{ user.firstName }}</p>
+    <p>Last Name: {{ user.lastName }}</p>
+    <p>Email: {{ user.Email }}</p>
+
+    <a href="{{ path('app_edit_profile') }}" class=""> Change </a> 
+{% endblock %}
+{% if app.user %}
+<div class="mb-3">
+    <a href="{{ path('app_logout') }}">Logout</a>
+</div>
+{% endif %}
+{% include "footer.html.twig" %}

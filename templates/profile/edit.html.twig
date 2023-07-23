@@ -1,0 +1,16 @@
+{# templates/profile/edit.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block body %}
+    <h1>Edit Profile</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.first_name) }}
+    {{ form_row(form.last_name) }}
+    {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.plainPassword.second) }}
+    {{ form_row(form.save) }}
+    {{ form_end(form) }}
+{% endblock %}
