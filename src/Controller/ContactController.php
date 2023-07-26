@@ -48,4 +48,13 @@ class ContactController extends AbstractController
             'data' => $listproduct
         ]);
     }
+    #[Route('/admin/contact/delete/{id}', name: 'app_admin_delete')]
+    public function delete(Contact $contact, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($contact);
+        $entityManager->flush();
+
+        return new RedirectResponse($this->urlGenerator->generate('app_admin_request'));
+    }
+
 }

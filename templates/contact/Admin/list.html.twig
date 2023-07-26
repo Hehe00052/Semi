@@ -66,7 +66,6 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Message</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -79,9 +78,8 @@
                             <td>{{ contact.getEmail() }}</td>
                             <td>{{ contact.getPhone() }}</td>
                             <td>{{ contact.getMessage() }}</td>
-                            <td>{{ contact.getStatus() }}</td>
                             <td class="comment-cell">
-                                <a href="{{ path('app_admin_add', {'id': contact.getId()}) }}" class="btn btn-warning">Comment</a>
+                                <a href="{{ path('app_admin_delete', {'id': contact.getId()}) }}" class="btn btn-warning">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}
