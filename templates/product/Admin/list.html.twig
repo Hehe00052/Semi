@@ -8,20 +8,21 @@
   {{ parent() }}
   <style>
     .display-product-table table {
-      width: 100%;
+      width: 80%;
       text-align: center;
     }
 
     .display-product-table table thead th {
-      padding: 1.5rem;
-      font-size: 1.5rem;
-      background-color: black;
+      padding: 1rem;
+      font-size: 1.25rem;
+      font-family:Palatino;
+      background-color: #708090;
       color: white;
     }
 
     .display-product-table table td {
-      padding: 1.5rem;
-      font-size: 2rem;
+      padding: 1rem;
+      font-size: 1rem;
       color: var(--black);
       background-color: var(--black);
     }
@@ -50,16 +51,15 @@
     }
       
     .product-image {
-      max-width: 200px; 
-      max-height: 200px; 
+      max-width: 150px; 
+      max-height: 150px; 
       object-fit: contain; 
     }
     
     .btn {
-      display: block;
-      width: 100%;
+      width: 80%;
       text-align: center;
-      font-size: 1.7rem;
+      font-size: 1rem;
       padding: 0.3rem 0.5rem;
       border-radius: 0.5rem;
       cursor: pointer;
@@ -85,8 +85,9 @@
 }
 
 .pagination li {
-  display: inline-block;
   margin-top:20px;
+  color: #708090;
+  background-color: #708090;
 }
 
 .pagination li.active {
@@ -96,7 +97,6 @@
 .pagination li a {
   display: block;
   padding: 5px 10px;
-  text-decoration: none;
   color: black;
   background-color: white;
   border: 1px solid #ccc;
@@ -105,7 +105,7 @@
 
 .pagination li a:hover {
   background-color: gray;
-  color: black;
+  color: white;
 }
 
     .btn.btn-warning {
@@ -117,8 +117,9 @@
 
 {% block body %}
 <div class="container">
-    <div style="align-items: center">
+    <div style="align-items: center;">
         <section class="display-product-table">
+        <div style="display: flex; justify-content: center;">
             <table class="table table-bordered" style="border">
                 <thead>
                     <tr>
@@ -154,11 +155,12 @@
                     {% endfor %}
                 </tbody>
             </table>
+            </div>
             <nav>
                 <ul class="pagination">
                     {% for page in 1..totalPages %}
-                        <li class="pagination pagination-lg {% if currentPage == page %}active{% endif %}" style="background-color:black;">
-                            <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                        <li class="pagination {% if currentPage == page %}active{% endif %}" style="">
+                            <a class="page-link" style="background-color:#708090"href="?page={{ page }}">{{ page }}</a>
                         </li>
                     {% endfor %}
                 </ul>

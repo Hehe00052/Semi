@@ -5,21 +5,22 @@
 {% block body %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <style>
-   .display-product-table table {
-      width: 100%;
+    .display-product-table table {
+      width: 80%;
       text-align: center;
     }
 
     .display-product-table table thead th {
-      padding: 1.5rem;
-      font-size: 1.5rem;
-      background-color: black;
+      padding: 1rem;
+      font-size: 1.25rem;
+      font-family:Palatino;
+      background-color: #708090;
       color: white;
     }
 
     .display-product-table table td {
-      padding: 1.5rem;
-      font-size: 2rem;
+      padding: 1rem;
+      font-size: 1rem;
       color: var(--black);
       background-color: var(--black);
     }
@@ -48,17 +49,16 @@
     }
       
     .product-image {
-      max-width: 200px; 
-      max-height: 200px; 
+      max-width: 150px; 
+      max-height: 150px; 
       object-fit: contain; 
     }
     
     .btn {
-      display: block;
-      width: 100%;
+      width: 80%;
       text-align: center;
-      font-size: 1.5rem;
-      padding: 0.1rem 0.1rem;
+      font-size: 1rem;
+      padding: 0.3rem 0.5rem;
       border-radius: 0.5rem;
       cursor: pointer;
       margin-top: 1rem;
@@ -73,6 +73,38 @@
       background-color: red;
       color: #ececec;
     }
+ .pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 0;
+}
+
+.pagination li {
+  margin-top:20px;
+  color: #708090;
+  background-color: #708090;
+}
+
+.pagination li.active {
+  font-weight: bold;
+}
+
+.pagination li a {
+  display: block;
+  padding: 5px 10px;
+  color: black;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.pagination li a:hover {
+  background-color: gray;
+  color: white;
+}
 
     .btn.btn-warning {
       background-color: orange;
@@ -83,6 +115,7 @@
 <div class="container">
     <div style="align-items: center">
         <section class="display-product-table">
+        <div style="display: flex; justify-content: center;">
             <table class="table table-bordered" style="border">
                 <thead>
                     <tr>
@@ -128,6 +161,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            </div>
             <ul class="pagination">
                 {% for page in 1..totalPages %}
                     <li class="page-item {% if currentPage == page %}active{% endif %}">
