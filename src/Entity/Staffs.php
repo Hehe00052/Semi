@@ -22,6 +22,9 @@ class Staffs
     #[ORM\Column(length: 255)]
     private ?string $Photo = null;
 
+    #[ORM\ManyToOne(inversedBy: 'staffs')]
+    private ?Catestaff $staffcate = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Staffs
     public function setPhoto(string $Photo): static
     {
         $this->Photo = $Photo;
+
+        return $this;
+    }
+
+    public function getStaffcate(): ?Catestaff
+    {
+        return $this->staffcate;
+    }
+
+    public function setStaffcate(?Catestaff $staffcate): static
+    {
+        $this->staffcate = $staffcate;
 
         return $this;
     }

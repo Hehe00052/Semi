@@ -51,16 +51,16 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
       //  throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
-    public function onAuthenticationSuccessadmin(Request $request, TokenInterface $token, string $firewallName): ?Response
-    {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse($targetPath);
-        }
+    // public function onAuthenticationSuccessadmin(Request $request, TokenInterface $token, string $firewallName): ?Response
+    // {
+    //     if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+    //         return new RedirectResponse($targetPath);
+    //     }
 
-        // For example:
-        return new RedirectResponse($this->urlGenerator->generate('app_admin_add'));
-        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
-    }
+    //     // For example:
+    //     return new RedirectResponse($this->urlGenerator->generate('app_admin_add'));
+    //     // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+    // }
 
     protected function getLoginUrl(Request $request): string
     {
