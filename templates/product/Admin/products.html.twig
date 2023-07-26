@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Product</title>
+  <title>Add Product</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
     /* Add CSS for Bootstrap 5 classes */
@@ -11,6 +11,7 @@
     .container {
       margin-top: 50px;
       margin-bottom: 30px;
+      font-family:Palatino;
     }
 
     /* Styling for the form */
@@ -55,7 +56,7 @@
       </div>
       <div>
         <label for="product_Description">{{field_label(product_form.Description)}}</label>
-        <input type="text"  value="{{field_value(product_form.Description)}}" name="{{field_name(product_form.Description)}}" class="form-control">
+        <textarea  name="{{field_name(product_form.Description)}}" class="form-control">{{field_value(product_form.Description)}}</textarea>
       </div>
             <div>
         <label for="product_price">{{field_label(product_form.photo)}}</label>

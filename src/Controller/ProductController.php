@@ -116,4 +116,15 @@ class ProductController extends AbstractController
             'data' => $listproduct
         ]);
     }
+
+    #[Route('admin/detailproduct{id}', name: 'app_product_detail_ad')]
+    public function detailad(Request $req, int $id,EntityManagerInterface $quer): Response
+    {
+        $quer = $quer->createQuery("SELECT product FROM App\Entity\Product product WHERE product.id = " . $id);
+        $listproduct = $quer->getResult();
+
+        return $this->render('product/Admin/details.html.twig', [
+            'data' => $listproduct
+        ]);
+    }
 }
