@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Security\Core\Encoder\UserPasswordHasherInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -70,22 +70,28 @@ class UserController extends AbstractController
     }
     
 
-        #[Route('/admin/user/edit/{id}', name: 'edit_user')]
-    public function editUser(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    #[Route('/admin/user/edit/{id}', name: 'edit_user')]
+    public function editUser(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-     if ($form->isSubmitted() && $form->isValid()) {
-        $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Handle password update
+            if ($form->get('plainPassword')->getData()) {
+                $hashedPassword = $userPasswordHasher->hashPassword($user, $form->get('plainPassword')->getData());
+                $user->setPassword($hashedPassword);
+            }
 
-        return $this->redirectToRoute('user_list');
-     }
+            $entityManager->flush();
 
-     return $this->render('user/edit.html.twig', [
-        'form' => $form->createView(),
-         ]);
-}
+            return $this->redirectToRoute('user_list');
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 
 
     #[Route(path: '/admin/user/delete/{id}', name: 'delete_user')]
