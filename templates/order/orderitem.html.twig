@@ -19,14 +19,20 @@
 
 {% block body %}
 <div class="container">
+<h2>Customer Information</h2>
+        <p>Name: {{ data[0].getOrderID().getCustomerName() }}</p>
+        <p>Address: {{ data[0].getOrderID().getCustomerAddress() }}</p>
+        <p>Phone: {{ data[0].getOrderID().getCustomerPhone() }}</p>
+        <p>Total Price: {{ data[0].getOrderID().getTotalPrice() }}</p>
+        <p>Total Price: {{ data[0].getOrderID().getDateOut()|date('d-m-Y') }}</p>
     <div style="display: flex; justify-content: center;">
         <table class="table table-bordered" style="border">
             <thead class="custom-thead"> 
                 <tr>
                     <td>Index</td>
                     <td>Item ID</td>
-                    <td>Quantity</td>
-                    <td>Price</td>
+                    <td style="text-align:right">Quantity</td>
+                    <td style="text-align:right">Price</td>
                 </tr>
             </thead>
             <tbody>
@@ -34,8 +40,8 @@
                 <tr>
                     <td>{{ loop.index }}</td>
                     <td>{{ item.getItem().getName() }}</td>
-                    <td>{{ item.getQuantity() }}</td>
-                    <td>{{ item.getPrice() }}$</td>
+                    <td style=" text-align:right;">{{ item.getQuantity() }}</td>
+                    <td style=" text-align:right;">{{ item.getPrice()|number_format(2, '.', ',') }}$</td>
                 </tr>
                 {% endfor %}
             </tbody>

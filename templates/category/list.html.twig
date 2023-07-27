@@ -124,7 +124,6 @@
             <table class="table table-bordered" style="border">
                 <thead>
                     <tr>
-                        <th>Index</th>
                         <th>ID</th>
                         <th>Image</th>
                         <th>Name</th>
@@ -137,10 +136,8 @@
                 {% set totalPages = (totalProducts / productsPerPage)|round(0, 'ceil') %}
                 {% set currentPage = app.request.query.get('page', 1) %}
                 {% set start = (currentPage - 1) * productsPerPage %}
-                {% set end = start + productsPerPage %}
-                {% for cate in data[start:end] %}
+                {% for cate in data[start:5] %}
                     <tr>
-                        <td style="vertical-align: middle;">{{ loop.index }}</td>
                         <td style="vertical-align: middle;">{{cate.getId()}}</td>
                         <td style="vertical-align: middle;"><img src="{{ asset('uploads/product/' ~ cate.getPhoto()) }}" class="product-image" /></td>
                         <td style="vertical-align: middle;">{{cate.getName()}}</td>

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
@@ -34,6 +35,9 @@ class Order
     #[ORM\OneToMany(mappedBy: 'OrderID', targetEntity: OrderItem::class)]
     private Collection $orderItems;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $DateOut = null;
+
     public function __construct()
     {
         $this->orderItems = new ArrayCollection();
@@ -41,6 +45,7 @@ class Order
 
     public function __toString(){
         return $this->id;
+        return $this->date;
     }
 
     public function getId(): ?int
@@ -134,6 +139,18 @@ class Order
                 $orderItem->setOrderID(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateOut(): ?\DateTimeInterface
+    {
+        return $this->DateOut;
+    }
+
+    public function setDateOut(?\DateTimeInterface $DateOut): static
+    {
+        $this->DateOut = $DateOut;
 
         return $this;
     }

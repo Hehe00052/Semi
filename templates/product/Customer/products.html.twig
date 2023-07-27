@@ -44,15 +44,14 @@
                 {% set totalPages = (totalProducts / productsPerPage)|round(0, 'ceil') %}
                 {% set currentPage = app.request.query.get('page', 1) %}
                 {% set start = (currentPage - 1) * productsPerPage %}
-                {% set end = start + productsPerPage %}
-                {% for sp in data[start:end] %}
+                {% for sp in data[start:9] %}
                     <form action="{{ path('app_cart_add', {'product_id': sp.getId()}) }}" method="post">
                         <div class="box">
                             <div class="image-container">
                                 <img src="{{ asset('uploads/product/' ~ sp.getPhoto()) }}" alt="">
                             </div>
                             <h3>{{ sp.getName() }}</h3>
-                            <div class="price">{{ sp.getPrice() }}$</div>
+                            <div class="price">{{ sp.getPrice()|number_format(2, '.', ',') }}$</div>
                             <button type="submit" class="btn" name="add_to_cart" style="background-color:black;line-height:3rem; font-size:1.7rem">Add to cart</button>
                             <a href="{{path('app_product_detail',{'id':sp.getId()})}}" class="btn btn-warning" style="font-weight:bold">More detail</a>
                             </div>

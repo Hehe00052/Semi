@@ -86,11 +86,11 @@
             <table class="table table-bordered" style="border">
                 <thead>
                     <tr>
-                        <th>Index</th>
                         <th>ID</th>
-                        <th>Customer Name</th>
-                        <th>Customer Address</th>
-                        <th>Customer Phone</th>
+                        <th style="text-align:left">Customer Name</th>
+                        <th style="text-align:left">Customer Address</th>
+                        <th style="text-align:left">Customer Phone</th>
+                        <th style="text-align:left">Date Out</th>
                         <th>Total Price</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -102,17 +102,16 @@
                     {% set totalPages = (totalProducts / productsPerPage)|round(0,"ceil") %}
                     {% set currentPage = app.request.query.get('page', 1) %}
                     {% set start = (currentPage - 1) * productsPerPage %}
-                    {% set end = start + productsPerPage %}
                     {% set sortedData = data|sort((a, b) => a.isStatus() == 1 ? 1 : -1) %}
 
-                    {% for order in sortedData[start:end] %}
+                    {% for order in sortedData[start:5] %}
                     <tr>
-                        <td style="vertical-align: middle;">{{ loop.index }}</td>
                         <td style="vertical-align: middle;">{{ order.getid() }}</td>
-                        <td style="vertical-align: middle;">{{ order.getCustomerName() }}</td>
-                        <td style="vertical-align: middle;">{{ order.getCustomerAddress() }}</td>
-                        <td style="vertical-align: middle;">{{ order.getCustomerPhone() }}</td>
-                        <td style="vertical-align: middle;">{{ order.getTotalPrice() }}$</td>
+                        <td style="vertical-align: middle;text-align:left">{{ order.getCustomerName() }}</td>
+                        <td style="vertical-align: middle;text-align:left">{{ order.getCustomerAddress() }}</td>
+                        <td style="vertical-align: middle;text-align:left">{{ order.getCustomerPhone() }}</td>
+                        <td style="vertical-align: middle;text-align:left">{{ order.getDateOut()|date('d-m-Y') }}</td>
+                        <td style="vertical-align: middle;">{{ order.TotalPrice()|number_format(2, '.', ',') }}$</td>
                         <td style="vertical-align: middle;">
                             {% if order.isStatus() == 1 %}
                             done

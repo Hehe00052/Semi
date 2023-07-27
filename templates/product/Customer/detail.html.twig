@@ -51,7 +51,7 @@
                     </tr>
                     <tr>
                        <th style="background-color: black; color: white; font-weight: bold;">Price</th>
-                       <td style="vertical-align: middle;">{{ product.getPrice() }}$</td>
+                       <td style="vertical-align: middle;">{{ product.getPrice()|number_format(2, '.', ',') }}$</td>
                     </tr>
                     <tr>
                        <th style="background-color: black; color: white; font-weight: bold;">Description</th>

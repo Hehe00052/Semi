@@ -17,14 +17,12 @@
 }
 
     .display-product-table table thead th {
-      padding: 1rem;
       font-size: 1.2rem;
       background-color: #708090;
       color: white;
     }
 
     .display-product-table table td {
-      padding: 1rem;
       font-size: 1rem;
     }
 
@@ -42,7 +40,6 @@
       margin-bottom: 2rem;
       text-align: center;
       font-size: 2rem;
-      padding: 1.5rem;
     }
       
     .product-image {
@@ -99,12 +96,12 @@
                 {% set currentPage = app.request.query.get('page', 1) %}
                 {% set start = (currentPage - 1) * productsPerPage %}
                 {% set end = start + productsPerPage %}
-                {% for product in data[start:end] %}
+                {% for product in data[start:5] %}
                     <tr>
                         <td style="vertical-align: middle;">{{product.getid()}}</td>
-                        <td style="vertical-align: middle;"><img src="{{ asset('uploads/product/' ~ product.getPhoto()) }}" class="product-image" />
-                        <td style="vertical-align: middle;">{{product.getName()}}</td>
-                        <td style="vertical-align: middle;">{{product.getPrice()}}$</td>
+                        <td style="vertical-align: middle;   border-right: none;"><img src="{{ asset('uploads/product/' ~ product.getPhoto()) }}" class="product-image" />
+                        <td style="vertical-align: middle;text-align:left;    border-left: none;">{{product.getName()}}</td>
+                        <td style="vertical-align: middle;">{{product.getPrice()|number_format(2, '.', ',')}}$</td>
                         <td>
                             <a href="javascript:delete123('{{path('app_delete_product',{'id':product.getId()})}}')" class="btn btn-danger"><i class="fas fa-trash"></i> </a>
                             <a href="{{path('app_edit_product',{'id':product.getId()})}}" class="btn btn-warning"> <i class="fas fa-edit"></i></a>

@@ -49,15 +49,11 @@
                     </tr>
                     <tr>
                        <th style="background-color: #708090; font-weight: bold;">Price</th>
-                       <td style="vertical-align: middle;">{{ product.getPrice() }}$</td>
+                       <td style="vertical-align: middle;">{{ product.getPrice()|number_format(2, '.', ',') }}$</td>
                     </tr>
                     <tr>
                        <th style="background-color: #708090; font-weight: bold;">Name</th>
                        <td style="vertical-align: middle;">{{ product.getName() }}</td>
-                    </tr>
-                    <tr>
-                       <th style="background-color: #708090; font-weight: bold;">Price</th>
-                       <td style="vertical-align: middle;">{{ product.getPrice() }}$</td>
                     </tr>
                     <tr>
                        <th style="background-color: #708090;font-weight: bold;">Description</th>
