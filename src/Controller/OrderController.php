@@ -32,12 +32,15 @@ class OrderController extends AbstractController
         $form->handleRequest($req);
         $session = $req->getSession();
         $cart_manager = $session->get('cart', new CartManager());
+        $time = new \DateTime();
+        $time->format('YYYY-mm-dd');
 
         if ($form->isSubmitted() && $form->isValid()) {
             $order = $form->getData();
             $em->getConnection()->beginTransaction();
             try {
                 $order->setTotalPrice($cart_manager->getAmount());
+                $order->setDateOut($time);
                 $order->setStatus(false);
                 $em->persist($order);
                 $cart_items = $cart_manager->getItems();
