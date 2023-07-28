@@ -23,8 +23,8 @@
         <p>Name: {{ data[0].getOrderID().getCustomerName() }}</p>
         <p>Address: {{ data[0].getOrderID().getCustomerAddress() }}</p>
         <p>Phone: {{ data[0].getOrderID().getCustomerPhone() }}</p>
-        <p>Total Price: {{ data[0].getOrderID().getTotalPrice() }}</p>
-        <p>Total Price: {{ data[0].getOrderID().getDateOut()|date('d-m-Y') }}</p>
+        <p>Total Price: {{ data[0].getOrderID().getTotalPrice()|number_format(2, '.', ',') }}$</p>
+        <p>Date Out: {{ data[0].getOrderID().getDateOut()|date('d-m-Y') }}</p>
     <div style="display: flex; justify-content: center;">
         <table class="table table-bordered" style="border">
             <thead class="custom-thead"> 
