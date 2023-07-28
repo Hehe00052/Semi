@@ -56,7 +56,7 @@
 				<td>{{cart_manager.amount|number_format(2, '.', ',')}}$</td>
 			</tr>
 		</table>
-    <a href="{{ path('checkout', {'name': "Pay Now Method", 'price': cart_manager.amount}) }}" class="button-pay-now">Pay Now</a>
+    <a hidden href="{{ path('checkout', {'name': "Pay Now Method", 'price': cart_manager.amount}) }}" class="button-pay-now">Pay Now</a>
 	</div>
 {% endblock %}
 {% include "footer.html.twig" %}
