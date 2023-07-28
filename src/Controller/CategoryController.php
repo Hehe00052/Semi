@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Entity\Product; 
 use App\Entity\Category; 
-use App\Form\ProductType;
 use App\Form\CategoryType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Service\FileUploader;
