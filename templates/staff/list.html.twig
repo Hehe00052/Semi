@@ -18,7 +18,7 @@
 </body> #}
 
 <div class="container">
-<a href="{{path('app_add_staff')}}" class="btn btn btn-secondary btn-lg"> Add</a>
+{# <a href="{{path('app_add_staff')}}" class="btn btn btn-secondary btn-lg"> Add</a> #}
 
 
     <table class="table" 
@@ -41,11 +41,11 @@
                     <td>{{staff.getName()}}</td>
                     <td><img src="{{asset('uploads/product/' ~ staff.getPhoto())}}" height="200"</td>
                     <td>{{staff.getPhonenumber()}}</td>
-                    {# <td>
-                        <a href="{{path('app_edit_san_pham',{'id':staff.getId()})}}" class="btn btn-danger"> Edit</a>
-                        <a href="javascript:deletesp('{{path('app_delete_san_pham',{'id':staff.getId()})}}')" class="btn btn-warning"> Delete</a>
+                    <td>
+                        <a href="{{path('app_edit_staff',{'id':staff.getId()})}}" class="btn btn-danger"> Edit</a>
+                        <a href="javascript:deletestaff('{{path('app_delete_staff',{'id':staff.getId()})}}')" class="btn btn-warning"> Delete</a>
                         
-                    </td> #}
+                    </td>
                 </tr>
              {% endfor %}
         </tbody>
@@ -56,8 +56,8 @@
 {% endblock %}
 {% block javascripts %}
 <script>
-    function deletesp(url){
-        if(confirm("Do you delete product?")){
+    function deletestaff(url){
+        if(confirm("Do you delete Staff?")){
             window.location.href = url;
         }
     }
