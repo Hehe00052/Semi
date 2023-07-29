@@ -185,37 +185,22 @@ header .navbar {
 </style>
 
 {% block body %}
-    <div class="container mt-5 mb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h1 class="mb-4">Edit Profile</h1>
-                {{ form_start(form) }}
-                {{ form_row(form.first_name, {'attr': {'class': 'form-control mb-3', 'placeholder': 'First Name'}}) }}
-                {{ form_row(form.last_name, {'attr': {'class': 'form-control mb-3', 'placeholder': 'Last Name'}}) }}
-                {{ form_row(form.plainPassword.first, {'attr': {'class': 'form-control mb-3', 'placeholder': 'New Password'}}) }}
-                {{ form_row(form.plainPassword.second, {'attr': {'class': 'form-control mb-3', 'placeholder': 'Confirm Password'}}) }}
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        {{ form_row(form.save, {'label': 'Save Changes', 'attr': {'class': 'btn btn-primary btn-block'}}) }}
-                    </div>
-                    <div class="col-md-6">
-                        <a href="javascript:delete123('{{path('app_delete_account',)}}')" class="btn btn-danger btn-block">Delete Account</a>
-                    </div>
-                </div>
-                {{ form_end(form) }}
-            </div>
-        </div>
-    </div>
+    <h1>Edit Profile</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.first_name) }}
+    {{ form_row(form.last_name) }}
+    {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.plainPassword.second) }}
+    {{ form_row(form.save) }}
+    {{ form_end(form) }}
+	<a href="javascript:delete123('{{path('app_delete_account',)}}')" class="btn btn-danger">Delete Account</a>
 {% endblock %}
-
 {% include "footer.html.twig" %}
-
 {% block link %}
-    {# Additional links or scripts if needed #}
-{% endblock %}
 
+{% endblock %}
 {% block javascripts %}
-    <script>
+<script>
     function delete123(url){
         if(confirm("Are you sure detele account?"))
         {

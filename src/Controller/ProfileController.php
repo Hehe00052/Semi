@@ -5,6 +5,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Form\ProfileFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,7 +41,6 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Handle password update
             if ($form->get('plainPassword')->getData()) {
                 $hashedPassword = $userPasswordHasher->hashPassword($user, $form->get('plainPassword')->getData());
                 $user->setPassword($hashedPassword);
@@ -74,30 +74,19 @@ public function deleteAccount(
     SessionInterface $session,
     UrlGeneratorInterface $urlGenerator
 ): Response {
-    // Ensure the user is logged in
     $user = $this->getUser();
     if (!$user instanceof UserInterface) {
         throw new AccessDeniedException('You must be logged in to delete your account.');
     }
-
-    // Get the current Token
     $token = $tokenStorage->getToken();
-
-    // Dispatch the LogoutEvent to handle user logout with the correct Token
     $logoutEvent = new LogoutEvent($request, $token);
     $eventDispatcher->dispatch($logoutEvent);
-
-    // Clear the token storage
     $tokenStorage->setToken(null);
-
-    // Invalidate the session to ensure the user is properly logged out
     $session->invalidate();
 
-    // Handle account deletion
     $this->entityManager->remove($user);
     $this->entityManager->flush();
 
-    // Redirect to the homepage
     return new RedirectResponse($urlGenerator->generate('app_home'));
 }
 }

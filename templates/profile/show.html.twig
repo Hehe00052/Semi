@@ -1,49 +1,85 @@
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="assets/css/profile.css" rel="stylesheet">
 {% include "header.html.twig" %}
 
-{% block title %}Profile{% endblock %}
+<body>
+  <div class="main-content">
+    <!-- Top navbar -->
 
-{% block body %}
-{% if user %}
-    <h1>Hello {{ user.username }}!</h1>
-    <p>First Name: {{ user.firstName }}</p>
-    <p>Last Name: {{ user.lastName }}</p>
-    <p>Email: {{ user.Email }}</p>
-
-    <a href="{{ path('app_edit_profile') }}" class="">Change</a>
-
-    {# Add the Delete Account button with a data-toggle attribute #}
-    <button class="btn btn-danger" id="deleteAccountBtn" data-toggle="modal" data-target="#deleteAccountModal">Delete Account</button>
-
-    {# Include the Delete Account modal #}
-    <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete your account?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a href="{{ path('app_delete_account') }}" class="btn btn-danger">Confirm</a>
-                </div>
-            </div>
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://img.freepik.com/free-vector/black-background-with-focus-spot-light_1017-27230.jpg?w=1060&t=st=1690631865~exp=1690632465~hmac=3f9396b6ff10dd9d543271955ae7c37892a26d2de631910ad0a5d130d4b6128f); background-size: cover; background-position: center top;">
+        <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white">Hello <br> {{ user.username }}!</h1>
+            
+          </div>
         </div>
+      </div>
     </div>
-    {% else %}
-    <p>You are not logged in. Please <a href="{{ path('app_login') }}">login</a> or <a href="{{ path('app_register') }}">register</a> to view your profile.</p>
-    {% endif %}
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
 
-{% endblock %}
+      </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">My account</h3>
+                </div>
+                <div class="col-4 text-right">
+                    <a href="{{ path('app_edit_profile') }}" class="btn btn-info">Edit profile</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" style="background-color: white;">
+              <form>
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-username">Username</label>
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value=" {{ user.username }}" readonly>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="input-email">Email address</label>
+                            <input type="text" id="input-email" class="form-control form-control-alternative" placeholder="Email" value="{{ user.Email }}" readonly>
+                          </div>
+                          
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-first-name">First name</label>
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="{{ user.firstname }}"readonly>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-last-name">Last name</label>
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="{{ user.lastname }}"readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-{% if app.user %}
-<div class="mb-3">
-    <a href="{{ path('app_logout') }}">Logout</a>
-</div>
-{% endif %}
-
+                <!-- Description -->
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 {% include "footer.html.twig" %}

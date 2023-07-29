@@ -10,6 +10,43 @@ section .section-title {
     margin-bottom: 50px;
     text-transform: uppercase;
 }
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/* Add new CSS properties */
+#footer {
+    background: #000000 !important;
+    min-height: 100px; /* Set a minimum height for the footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#footer-content {
+    max-width: 1200px; /* Set a maximum width for the footer content */
+}
+
+#footer h5 {
+    padding-left: 10px;
+    border-left: 3px solid #eeeeee;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* Rest of your existing CSS remains the same */
+
+@media (max-width: 767px) {
+    #footer h5 {
+        padding-left: 0;
+        border-left: transparent;
+        padding-bottom: 0px;
+        margin-bottom: 10px;
+    }
+
+    /* Adjust other styles for smaller screens if needed */
+}
 #footer {
     background: #000000 !important;
 }
