@@ -40,7 +40,9 @@
   *::after {
     box-sizing: border-box;
   }
-  
+  body, p, h1, h2, h3, h4, h5, h6, label, input, button, textarea, mb-4, select {
+    font-family: Palatino, serif;
+  }
   html {
     font-family: sans-serif;
     line-height: 1.15;
