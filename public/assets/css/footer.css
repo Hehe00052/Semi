@@ -10,9 +10,7 @@ section .section-title {
     margin-bottom: 50px;
     text-transform: uppercase;
 }
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-/* Add new CSS properties */
 #footer {
     background: #000000 !important;
     min-height: 100px; /* Set a minimum height for the footer */
@@ -110,4 +108,3 @@ section .section-title {
     margin-bottom: 10px;
 }
 }
-    

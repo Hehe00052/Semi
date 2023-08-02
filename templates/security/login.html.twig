@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-{# {% extends 'base.html.twig' %} #}
->>>>>>> 110df7e4db1b0858ddb290d34404a84dc25b42ea
+
 
 {% block title %}Log in!{% endblock %}
 
@@ -15,6 +12,7 @@
     </header>
 </body>
 <div class="container">
+
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -36,18 +34,6 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-    
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-{# <br> #}
 
 <hr>
     <button class="btn btn-danger" type="submit">
