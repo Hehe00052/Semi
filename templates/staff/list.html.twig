@@ -1,21 +1,21 @@
-{# {% form_theme sp_form 'bootstrap_5_layout.html.twig'%} #}
+{# {% form_theme staff_form 'bootstrap_5_layout.html.twig'%} #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello NoteController!{% endblock %}
 
 {% block body %}
-{# <body>
-    <header>
+{# <body> #}
+    {# <header>
         <h2 class="logo"> LOGO </h2>
             <nav class="navigation">            
                 <a href="#">List of Products</a>
                 <a href="#">Services</a>
                 <a href="#">Contact</a>
 
-                <a href="{{path('app_logout')}}"> Logout</a>
+                <a class="logout" href="{{path('app_logout')}}">Logout</a>
             </nav>
-    </header>
-</body> #}
+    </header> #}
+{# </body> #}
 
 <div class="container">
 {# <a href="{{path('app_add_staff')}}" class="btn btn btn-secondary btn-lg"> Add</a> #}
@@ -42,8 +42,8 @@
                     <td><img src="{{asset('uploads/product/' ~ staff.getPhoto())}}" height="200"</td>
                     <td>{{staff.getPhonenumber()}}</td>
                     <td>
-                        <a href="{{path('app_edit_staff',{'id':staff.getId()})}}" class="btn btn-danger"> Edit</a>
-                        <a href="javascript:deletestaff('{{path('app_delete_staff',{'id':staff.getId()})}}')" class="btn btn-warning"> Delete</a>
+                        <a href="{{path('app_edit_staff',{'id':staff.getId()})}}" class="btn btn-outline-danger"> Edit</a>
+                        <a href="javascript:deletestaff('{{path('app_delete_staff',{'id':staff.getId()})}}')" class="btn btn-outline-dark"> Delete</a>
                         
                     </td>
                 </tr>
@@ -65,5 +65,6 @@
 {% endblock %}
 {% block stylesheets %}
 <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"/>
-<link rel="stylesheet" href="{{asset('css/List.css')}}"/>
+<link rel="stylesheet" href="{{asset('cssK/Staff.css')}}"/>
+
 {% endblock %}

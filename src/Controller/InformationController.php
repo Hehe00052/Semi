@@ -35,7 +35,7 @@ class InformationController extends AbstractController
     #[Route('/home/user', name: 'app_home_user')]
     public function homeuser(): Response
     {
-        return $this->render('information/homeuser.html.twig', [
+        return $this->render('information/homeu.html.twig', [
             'controller_name' => 'InformationController',
         ]);
     }
