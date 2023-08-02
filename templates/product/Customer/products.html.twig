@@ -34,6 +34,7 @@
 </style>
 {% endblock %}
 
+
 {% block body %}
     <div class="container">
         <section class="products">
@@ -67,6 +68,17 @@
                     {% endfor %}
                 </ul>
             </nav>
+                {% for sp in data %}
+                <form action="{{ path('app_cart_add', {'product_id': sp.getId()}) }}" method="post">
+                    <div class="box">
+                        <img src="{{ asset('uploads/product/' ~ sp.getPhoto()) }}" alt="">
+                        <h3>{{ sp.getName() }}</h3>
+                        <div class="price">{{ sp.getPrice() }}</div>
+                        <button type="submit" class="btn" name="add_to_cart" style="line-height:3rem; font-size:1.7rem">Add to cart</button>
+                    </div>
+                </form>
+                {% endfor %}
+            </div>
         </section>
     </div>
 {% endblock %}
