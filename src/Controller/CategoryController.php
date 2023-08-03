@@ -34,8 +34,10 @@ class CategoryController extends AbstractController
             $data = $form->getData();
 
             $file = $form->get("Photo")->getData();
+            if ($file){
             $fileName = $uploader->upload($file);
             $data->setPhoto($fileName);
+            }
             $connect->persist($data);
             $connect->flush();
             return new RedirectResponse($this->urlGenerator->generate('app_product_list_cate'));

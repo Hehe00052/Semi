@@ -91,10 +91,9 @@
 
     <!-- Center the buttons using Bootstrap -->
     <div class="d-flex justify-content-center my-3">
-      <input type="submit" value="Submit" class="btn btn-primary mx-2">
+      <input type="submit" value="Submit" class="btn btn-primary mx-2" onclick="return validateForm()">
       <input type="button" value="Clear" onclick="clearForm()" class="btn btn-secondary mx-2">
     </div>
-
     {{ form_end(product_form) }}
   </div>
 
@@ -114,6 +113,32 @@
         reader.readAsDataURL(file);
       }
     });
+
+    function validateForm() {
+        const name = document.querySelector("input[name='{{ field_name(product_form.name) }}']");
+        const price = document.querySelector("input[name='{{ field_name(product_form.price) }}']");
+        const description = document.querySelector("textarea[name='{{ field_name(product_form.Description) }}']");
+        const photo = document.querySelector("input[name='{{ field_name(product_form.photo) }}']");
+
+        if (name.value.trim() === "") {
+            alert("Please enter a product name.");
+            name.focus();
+            return false;
+        }
+
+        if (price.value.trim() === "") {
+            alert("Please enter a product price.");
+            price.focus();
+            return false;
+        }
+
+        // Check if an image has been selected
+        if (!photo.files || photo.files.length === 0) {
+            alert("Please select an image.");
+            return false;
+        }
+        return true;
+    }
   </script>
 </body>
 </html>
