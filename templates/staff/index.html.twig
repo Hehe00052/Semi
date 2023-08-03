@@ -1,0 +1,14 @@
+{% form_theme staff_form 'bootstrap_5_layout.html.twig'%}
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NoteController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    {{form_start(staff_form)}}
+    {{form_widget(staff_form)}}
+    <input type="submit" value="submit" class="btn btn-primary"/>
+    {{form_end(staff_form)}}
+</div>
+{% endblock %}
