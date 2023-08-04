@@ -32,20 +32,6 @@
             <li><a class="dropdown-item" href="{{path('app_product_list')}}">List</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_admin_request')}}">Contact</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Staff
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{{path('app_add_staff')}}">Add</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{path('app_staff')}}">List</a></li>
-          </ul>
-        </li>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Account
@@ -56,6 +42,26 @@
             <li><a class="dropdown-item" href="{{path('app_user_manager')}}">List</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{path('app_admin_add_cate')}}">Add</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{path('app_product_list_cate')}}">List</a></li>
+                        </ul>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_admin_request')}}">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_staff')}}">Staff</a>
+        </li>
+            
+          <li class="nav-item">
+                        <a class="nav-link" href="{{path('app_order_list')}}">Order</a>
+          </li>
 
         <li class="nav-item">
             <a class="nav-link" href="{{path('app_logout')}}">Logout</a>
