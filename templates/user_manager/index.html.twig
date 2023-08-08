@@ -28,9 +28,9 @@
                     <td>{{u.getFirstName()}}</td>    
                     <td>{{u.getLastName()}}</td>            
                     <td>
-                        
-                        
                         <a href="javascript:deletestaff('{{path('app_delete_user',{'id':u.getId()})}}')" class="btn btn-outline-dark"> Delete</a>
+                        <a href="#" class="btn btn-warning">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>     
                 {% endfor %}
@@ -41,16 +41,11 @@
 {% endblock %}
 {% block javascripts %}
 <script>
-    function deletestaff(url){
-        if(confirm("Do you delete Staff?")){
+    function delete123(url){
+        if(confirm("Go go go!"))
+        {
             window.location.href = url;
         }
-    }
-</script>
-{% endblock %}
-
-{% block stylesheets %}
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"/>
-<link rel="stylesheet" href="{{asset('cssK/Account.css')}}"/>
-<link rel="stylesheet" href="{{asset('cssK/Listaccount.css')}}"/>
+    }   
+</script>   
 {% endblock %}

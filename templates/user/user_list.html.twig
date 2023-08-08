@@ -1,0 +1,36 @@
+{# templates/user/user_list.html.twig #}
+{% include "base.html.twig" %}
+
+{% block content %}
+    <h1>List User</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>
+                        <a href="{{ path('edit_user', {'id': user.id}) }}">Edit</a>
+                        <a href="{{ path('delete_user', {'id': user.id}) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('add_user') }}">Add new user</a>
+{% endblock %}

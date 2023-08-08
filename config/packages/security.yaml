@@ -35,6 +35,11 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: '^/user/manager', roles: ROLE_ADMIN }
         - { path: '^/user/manager/add', roles: ROLE_ADMIN }
+<<<<<<< HEAD
+=======
+        - { path: '^/contact', roles: ROLE_ADMIN }
+        - { path: '^/product', roles: ROLE_ADMIN }
+>>>>>>> Di
         - { path: '^/admin/product', roles: ROLE_ADMIN }
         - { path: '^/admin/product/list', roles: ROLE_ADMIN }
         - { path: '^/product{id}', roles: ROLE_ADMIN }

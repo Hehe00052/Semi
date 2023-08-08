@@ -1,11 +1,12 @@
 {# {% extends 'base.html.twig' %} #}
 
+
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
 <body>
     <header>
-        <h2 class="logo"> Se Mi </h2>
+        <h2 class="logo"> SeMi </h2>
             <nav class="navigation">
                 
             </nav>
@@ -33,7 +34,6 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-    
 <hr>
     <button class="btn btn-danger" type="submit">
         Sign in
@@ -43,6 +43,7 @@
             <a href="{{ path('app_register') }}" class="register-link"> Register </a> 
             
         </p>
+        <a href="" class="register-link"> Forgot password? </a> 
     </div>
 </form>
 </div>

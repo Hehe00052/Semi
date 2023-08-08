@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Request{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            background-color: #ffffff;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #555555;
+            color: #ffffff;
+        }
+
+        td {
+            border: 1px solid #cccccc;
+            padding: 8px;
+            color: #333333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        .comment-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            background-color: #888888;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #555555;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h2>Check the Request</h2>
+        <div style="align-items: center">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in data %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ contact.getid() }}</td>
+                            <td>{{ contact.getName() }}</td>
+                            <td>{{ contact.getEmail() }}</td>
+                            <td>{{ contact.getPhone() }}</td>
+                            <td>{{ contact.getMessage() }}</td>
+                            <td class="comment-cell">
+                                <a href="{{ path('app_admin_delete', {'id': contact.getId()}) }}" class="btn btn-warning">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

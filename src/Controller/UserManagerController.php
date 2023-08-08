@@ -55,6 +55,7 @@ class UserManagerController extends AbstractController
             'u_form' => $form->createView(),
         ]);
     }
+<<<<<<< HEAD
 
     #[Route('/user{id}/delete', name: 'app_delete_user')]
     public function delete(Request $req, int $id, EntityManagerInterface $connect): Response
@@ -64,4 +65,6 @@ class UserManagerController extends AbstractController
         $connect->flush();
         return new RedirectResponse($this->ug->generate('app_user_manager'));
     }
+=======
+>>>>>>> Di
 }
