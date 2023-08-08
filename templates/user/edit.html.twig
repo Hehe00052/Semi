@@ -1,11 +1,36 @@
 {# templates/admin/user/edit.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Edit User</h1>
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Tùy chỉnh CSS cho trang chỉnh sửa người dùng */
+        .edit-user-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Save Changes</button>
-    {{ form_end(form) }}
+        .edit-user-title {
+            margin-bottom: 20px;
+        }
+
+        .save-button {
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="edit-user-container">
+        <h1 class="edit-user-title">Edit User</h1>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary save-button">Save Changes</button>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

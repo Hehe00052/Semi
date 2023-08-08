@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="assets/css/owl.css">
 
   </head>
-
   <body>
 
     <!-- ***** Preloader Start ***** -->
@@ -36,18 +35,13 @@
     </div>  
     <!-- ***** Preloader End ***** -->
 
-    <!-- Header -->
-<<<<<<< HEAD
     {% include "header.html.twig" %}
 
-=======
-    {% include "header.html.twig" %}  
->>>>>>> Di
     <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="banner header-text">
       <div class="owl-banner owl-carousel">
-        <div class="banner-item-01">
+        <div class="banner-item-01" style="	background-image: url(assets/images/price_2.jpg);">
           <div class="text-content">
             <h4 style="font-size: 2.5rem;">Children</h4>
             <h2>Are the hope and bright future of society</h2>
@@ -59,7 +53,7 @@
             <h2>Are little flames full of talent and creativity</h2>
           </div>
         </div>
-        <div class="banner-item-03">
+        <div class="banner-item-03" style="	background-image: url(assets/images/price_4.jpg">
           <div class="text-content">
             <h4 style="font-size: 3rem;">Children</h4>
             <h2>Are happy and warm gifts</h2>
@@ -80,11 +74,11 @@
           </div>
           <div class="col-md-4">
             <div class="product-item">
-              <a href="#"><img src="assets/images/price_2.jpg" alt=""></a>
+              <a href="#"><img src="/uploads/product/turtle-64b927f6447d6.jpg" alt=""></a>
               <div class="down-content">
-                <a href="#"><h4>Tittle goes here</h4></a>
-                <h6>$25.75</h6>
-                <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+                <a href="#"><h4>Turtle  </h4></a>
+                <h6>17.00$</h6>
+                <p>Supper Cute! Good for people who are Water Living</p>
                 <ul class="stars">
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
@@ -92,7 +86,6 @@
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
                 </ul>
-                <span>Reviews (24)</span>
               </div>
             </div>
           </div>
@@ -100,9 +93,9 @@
             <div class="product-item">
               <a href="#"><img src="/uploads/product/snolax-64b7c1db0e7ea.jpg" alt=""></a>
               <div class="down-content">
-                <a href="#"><h4>Tittle goes here</h4></a>
-                <h6>$30.25</h6>
-                <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+                <a href="#"><h4>Snorlax</h4></a>
+                <h6>50.00$</h6>
+                <p>Supper Cute! Good for people who are Water Living</p>
                 <ul class="stars">
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
@@ -110,7 +103,6 @@
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
                 </ul>
-                <span>Reviews (21)</span>
               </div>
             </div>
           </div>
@@ -118,9 +110,9 @@
             <div class="product-item">
               <a href="#"><img src="/uploads/product/gengar-64b7c20401f62.jpg" alt=""></a>
               <div class="down-content">
-                <a href="#"><h4>Tittle goes here</h4></a>
-                <h6>$20.45</h6>
-                <p>Sixteen Clothing is free CSS template provided by TemplateMo.</p>
+                <a href="#"><h4>Gengar</h4></a>
+                <h6>8.00$</h6>
+                <p>Supper Cute! Good for people who are Water Living</p>
                 <ul class="stars">
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
@@ -128,7 +120,6 @@
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
                 </ul>
-                <span>Reviews (36)</span>
               </div>
             </div>
           </div>
@@ -185,9 +176,60 @@
         </div>
       </div>
     </div>
-
+</div>
     <!-- Start footer-->
-    {% include "footer.html.twig" %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="assets/css/footer.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<section id="footer">
+    <div class="container">
+        <div class="row text-center text-xs-center text-sm-left text-md-left">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>About us</h5>
+                <p style="color:white;">
+                    Semi Company, a seasoned player in the toy industry, takes pride in crafting and distributing top-tier, diverse, and secure toy items for kids. Our dedication lies in offering customers unforgettable moments and genuine worth through distinct playthings. Every creation encapsulates ingenuity and refined design. Our focus is on nurturing children's cognitive faculties, exploration, and inventiveness, as we continually refresh our toy lineup. Quality remains our foremost concern, guaranteeing that each toy delivers happiness while fostering children's growth.
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>Features</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="{{path('app_home')}}"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                    <li><a href="{{path('app_product')}}"><i class="fa fa-angle-double-right"></i>Products</a></li>
+                    <li><a href="{{path('app_about')}}"><i class="fa fa-angle-double-right"></i>About</a></li>
+                    <li><a href="{{path('app_contact')}}"><i class="fa fa-angle-double-right"></i>Contact Us</a></li>
+                    <li><a href="https://www.freeprivacypolicy.com/live/79ca156c-5de1-4bc6-8e67-45cd62f7129e"><i class="fa fa-angle-double-right"></i>Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>Other contact information</h5>
+                <ul class="list-unstyled quick-links" style="color: white;">
+                    <li><i>didmxbc00058@fpt.edu.vn| +070 2845 756</i></li>
+                    <li><i>phuonghtnbc00052@fpt.edu.vn| +091 6198 548</i></li>
+                    <li><i>kietnvbc00049@fpt.edu.vn| +036 5338 322</i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <ul class="list-unstyled list-inline social text-center">
+                    <li class="list-inline-item"><a href="https://www.facebook.com/xuandi03"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="mailto:didmxbc00058@fpt.edu.vn" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                </ul>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p class="h6" style="font-size:2.5rem; color:orange;">BTEC FPT Can Tho</p>
+            </div>
+            <hr>
+        </div>
+    </div>
+</section>
+
+
     <!-- End footer-->
 
     <!-- Bootstrap core JavaScript -->
@@ -214,4 +256,6 @@
       }
     </script>
   </body>
+
 </html>
+
