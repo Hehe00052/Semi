@@ -109,6 +109,6 @@ class OrderController extends AbstractController
         $product = $connect->find(Order::class,$id);
         $product->setStatus(1);
         $connect->flush();
-            return new RedirectResponse($this->urlGenerator->generate('app_order_list'));
+        return new RedirectResponse($this->urlGenerator->generate('app_order_list'));
     }
 }
