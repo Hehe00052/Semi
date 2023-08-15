@@ -1,0 +1,17 @@
+.logout{
+    /* position: fixed; */
+    /* top: 20px; */
+   
+  
+    /* width: 100%; */
+    padding: 10px; 
+   
+    /* background: black; */
+    /* color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99; */
+    text-decoration: none;
+    color: rgb(73, 70, 70);
+}

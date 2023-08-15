@@ -27,12 +27,35 @@
                     <td>{{ user.firstname }}</td>
                     <td>{{ user.lastname }}</td>
                     <td>
-                        <a href="{{ path('edit_user', {'id': user.id}) }}" class="btn btn-success">Edit</a>
-                        <a href="{{ path('delete_user', {'id': user.id}) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ path('edit_user', {'id': user.id}) }}" class="btn btn-outline-dark">Edit</a>
+                        <a href="javascript:deletestaff('{{path('delete_user',{'id':user.getId()})}}')" class="btn btn-outline-dark"> Delete</a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
+{% endblock %}  
+
+{% block javascripts %}
+<script>
+    function deletestaff(url){
+        if(confirm("Do you delete Account?")){
+            window.location.href = url;
+        }
+    }
+</script>
 {% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"/>
+{# <link rel="stylesheet" href="{{asset('cssK/Account.css')}}"/>
+<link rel="stylesheet" href="{{asset('cssK/Listaccount.css')}}"/> #}
+<link rel="stylesheet" href="{{asset('cssK/Userlist.css')}}"/>
+
+{% endblock %}
+
+
+
+
+
