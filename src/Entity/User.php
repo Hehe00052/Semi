@@ -43,6 +43,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 200, nullable: true)]
     private ?string $last_name = null;
 
+    #[ORM\ManyToOne]
+    private ?staffs $idstaff = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -160,6 +163,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(?string $last_name): static
     {
         $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    public function getIdstaff(): ?staffs
+    {
+        return $this->idstaff;
+    }
+
+    public function setIdstaff(?staffs $idstaff): static
+    {
+        $this->idstaff = $idstaff;
 
         return $this;
     }
