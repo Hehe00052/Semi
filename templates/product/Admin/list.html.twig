@@ -73,14 +73,18 @@
   padding: 0;
 }
   </style>
+
+<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"/>
+<link rel="stylesheet" href="{{asset('cssK/Base.css')}}"/>
+<link rel="stylesheet" href="{{asset('cssK/Productlist.css')}}"/>
 {% endblock %}
 
 {% block body %}
 <div class="container" >
     <div style="align-items: center;">
-        <section class="display-product-table">
+        <section class="">
         <div style="display: flex; justify-content: center;">
-            <table class="table table-bordered" style="border">
+            <table class="table">
                 <thead>
                     <tr >
                         <th >ID</th>

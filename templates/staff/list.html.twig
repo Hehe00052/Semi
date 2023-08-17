@@ -24,12 +24,12 @@
     <table class="table" 
         <thead>
             <tr>
-                <td> STT </td>
-                <td> Code Staff </td>
-                <td> Name Staff </td>
-                <td> Photo </td>
-                <td> Number Phone </td>
-                <td> Act </td>
+                <th> STT </th>
+                <th> Code Staff </th>
+                <th> Name Staff </th>
+                <th> Photo </th>
+                <th> Number Phone </th>
+                <th> Act </th>
             </tr>
          </thead>
 
@@ -42,8 +42,8 @@
                     <td><img src="{{asset('uploads/product/' ~ staff.getPhoto())}}" height="200"</td>
                     <td>{{staff.getPhonenumber()}}</td>
                     <td>
-                        <a href="{{path('app_edit_staff',{'id':staff.getId()})}}" class="btn btn-danger"> Edit</a>
-                        <a href="javascript:deletestaff('{{path('app_delete_staff',{'id':staff.getId()})}}')" class="btn btn-warning"> Delete</a>
+                        <a href="{{path('app_edit_staff',{'id':staff.getId()})}}" class="btn btn-outline-dark"> Edit</a>
+                        <a href="javascript:deletestaff('{{path('app_delete_staff',{'id':staff.getId()})}}')" class="btn btn-outline-dark"> Delete</a>
                         
                     </td>
                 </tr>
@@ -65,5 +65,6 @@
 {% endblock %}
 {% block stylesheets %}
 <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"/>
-<link rel="stylesheet" href="{{asset('css/List.css')}}"/>
+<link rel="stylesheet" href="{{asset('cssK/Base.css')}}"/>
+<link rel="stylesheet" href="{{asset('cssK/Stafflist.css')}}"/>
 {% endblock %}
