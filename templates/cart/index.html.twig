@@ -26,6 +26,13 @@
 </style>
 {% endblock %}
 {% block body %}
+ <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
 	<div class="container" style="margin-top: 80px;margin-bottom:80px">
 		<a href="{{path('app_product')}}" class="button">Add another product</a>
 		<table class="table">
@@ -66,4 +73,5 @@
 {% endblock %}
 {% include "footer.html.twig" %}
 {% block javascripts %}
+<script src="assets/js/custom.js"></script>
 {% endblock %}
