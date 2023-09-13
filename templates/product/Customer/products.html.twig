@@ -1,8 +1,8 @@
-
-{% include "header.html.twig" %}
+<!DOCTYPE html>
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/templatemo-sixteen.css') }}">
+    
 <style>
  .pagination {
   list-style: none;
@@ -37,6 +37,17 @@
 
 
 {% block body %}
+<body data-new-gr-c-s-check-loaded="14.1123.0" data-gr-ext-installed="">
+<div id="preloader">
+<!-- ***** Preloader Start ***** -->
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    {% include "header.html.twig" %}
     <div class="container">
         <section class="products">
             <h1 class="heading">ALL PRODUCTS</h1>
@@ -73,14 +84,11 @@
             </div>
         </section>
     </div>
+    </body>
 {% endblock %}
 {% include "footer.html.twig" %}
 {% block javascripts %}
-    <script>
-        function deletesp(url){
-            if(confirm("Do you want to delete the product?")){
-                window.location.href = url;
-            }
-        }
-    </script>
+    <script src="assets/js/custom.js"></script>
 {% endblock %}
+
+</html>
