@@ -14,11 +14,11 @@
     </header>
 
 <div class="container">
+   {# <form> #}
     <h1 class="TD">Register</h1>
     <hr>
-    
     {{ form_errors(registrationForm) }}
-   
+
     {{ form_start(registrationForm) }}
     
         {{ form_row(registrationForm.username) }}
@@ -28,14 +28,10 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-
         {{ form_row(registrationForm.agreeTerms) }}
-    
         <button type="submit" class="btn btn-danger">Register</button>
         <hr>
         <input type="button" value="Clear" onclick="clearForm()" class="btn btn-danger">
-        
-    
     {{ form_end(registrationForm) }}
 </div>
 </body>
@@ -54,7 +50,3 @@
     }
 </script>
 {% endblock %}
-
-
-
-

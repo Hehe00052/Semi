@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -19,6 +20,11 @@ class ProductType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('price', NumberType::class)
+            ->add('Description', TextareaType::class, [
+                'row_attr' => [
+                    'rows' => 6, // Set the number of visible rows for the textarea
+                ],
+            ])
             ->add('photo', FileType::class, [
                 'label' => 'Photo (png, jpeg)',
                 'data_class' => null,

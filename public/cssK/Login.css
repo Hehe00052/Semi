@@ -3,6 +3,7 @@
     position: relative;
     width: 350px;
     height: 500px;
+    top: -90px;
     background: transparent;
     border: 2px solid black(255,255,255,.5);
     border-radius: 10px;

@@ -32,12 +32,15 @@ class OrderController extends AbstractController
         $form->handleRequest($req);
         $session = $req->getSession();
         $cart_manager = $session->get('cart', new CartManager());
+        $time = new \DateTime();
+        $time->format('YYYY-mm-dd');
 
         if ($form->isSubmitted() && $form->isValid()) {
             $order = $form->getData();
             $em->getConnection()->beginTransaction();
             try {
                 $order->setTotalPrice($cart_manager->getAmount());
+                $order->setDateOut($time);
                 $order->setStatus(false);
                 $em->persist($order);
                 $cart_items = $cart_manager->getItems();
@@ -56,9 +59,9 @@ class OrderController extends AbstractController
                 $session->set('cart', new CartManager());
             } catch (Exception $e) {
                 $em->getConnection()->rollBack();
-                return new RedirectResponse($this->urlGenerator->generate('app_order',["message"=>"Lỗi! Không thể tạo đơn hàng"]));
+                return new RedirectResponse($this->urlGenerator->generate('app_order',["message"=>"Error! Can't create the order"]));
             }
-            return new RedirectResponse($this->urlGenerator->generate('app_product',["message"=>"Tạo đơn hàng thành công"]));
+            return new RedirectResponse($this->urlGenerator->generate('app_product',["message"=>"Your order has been confirmed"]));
         }
 
         return $this->render('order/index.html.twig', [
@@ -98,5 +101,14 @@ class OrderController extends AbstractController
         return $this->render('order/orderitem.html.twig', [
             'data' => $listproduct
         ]);
+    }
+
+    #[Route('change{id}', name: 'app_mark')]
+    public function change(Request $req, int $id,  EntityManagerInterface $connect): Response
+    {
+        $product = $connect->find(Order::class,$id);
+        $product->setStatus(1);
+        $connect->flush();
+        return new RedirectResponse($this->urlGenerator->generate('app_order_list'));
     }
 }

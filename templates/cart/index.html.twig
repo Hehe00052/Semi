@@ -1,34 +1,62 @@
-{% extends 'header.html.twig' %}
-
+{% include "header.html.twig" %}
 {% block title %}Cart manager
 {% endblock %}
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+<style>
+  .button {
+	margin-left:29.5rem;
+	margin-bottom:20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .button:hover {
+    background-color: gray;
+    color: black;
+  }
+  .quantity {
+	margin: 2rem;
+
+  }
+</style>
+{% endblock %}
 {% block body %}
-	<div class="container">
-		<a href="{{path('app_product')}}">Add another product</a>
+ <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+	<div class="container" style="margin-top: 80px;margin-bottom:80px">
+		<a href="{{path('app_product')}}" class="button">Add another product</a>
 		<table class="table">
 			<tr>
 				<th>STT</th>
 				<th>Product</th>
 				<th>Price</th>
-				<th>Quantity</th>
-				<th>Total</th>
-				<th>Action</th>
+				<th style="text-align:right;width:10px">Quantity</th>
+				<th style="text-align:right">Total</th>
+				<th style="text-align:right">Action</th>
 			</tr>
 			{% for item in cart_manager.items%}
 				<tr>
 					<form action="{{path('app_cart_update')}}" method="POST">
 						<td>{{loop.index}}</td>
-						<td>{{item.product.id}}
-							-
+						<td>
 							{{item.product.name}}</td>
-						<td>{{item.product.price}}$</td>
+						<td style="border-bottom: 1px solid #dee2e6">{{item.product.price|number_format(2, '.', ',')}}$</td>
 						<td>
                             <input type='hidden' value='{{item.product.id}}' name='product_id'/>
-							<input type='number' onchange="this.form.submit()" value='{{item.quantity}}' min="1" name='qty'/>
+							<input style="text-align:right"type='number' onchange="this.form.submit()" value='{{item.quantity}}' min="1" name='qty'/>
 						</td>
-						<td>{{item.amount}}$</td>
-						<td>
+						<td style="text-align:right;border-bottom: 1px solid #dee2e6">{{item.amount|number_format(2, '.', ',')}}$</td>
+						<td style="text-align:right;border-bottom: 1px solid #dee2e6">
 							<a href="{{path('app_cart_remove',{'product_id':item.product.id})}}">Remove</a>
 						</td>
 					</form>
@@ -36,11 +64,14 @@
 			{% endfor %}
 			<tr>
 				<td colspans="5">SUM</td>
-				<td>{{cart_manager.amount}}$</td>
+				<td>{{cart_manager.amount|number_format(2, '.', ',')}}$</td>
 			</tr>
 		</table>
-		<a href="{{path('app_order')}}">Check out</a>
+		<a href="{{path('app_order')}}" class="button" style="margin-left:32rem">Check out</a>
+		<a href="{{path('checkout')}}" class="button" style="margin-left:32rem">Pay</a>
 	</div>
 {% endblock %}
+{% include "footer.html.twig" %}
 {% block javascripts %}
+<script src="assets/js/custom.js"></script>
 {% endblock %}

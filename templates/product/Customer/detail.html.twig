@@ -1,0 +1,82 @@
+{% include "header.html.twig" %}
+{% block title %}List of Product{% endblock %}
+
+{% block stylesheets %}
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    .display-product-table table {
+      width: 100%;
+      text-align: center;
+    }
+
+    .display-product-table table thead th {
+      padding: 1.5rem;
+      font-size: 1.5rem;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+    }
+
+    .display-product-table table td {
+      padding: 1.5rem;
+      font-size: 2rem;
+      color: var(--black);
+      background-color: var(--black);
+    }
+      
+    .product-image {
+      max-width: 200px; 
+      max-height: 200px; 
+      object-fit: contain; 
+    }
+    
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div style="align-items: center">
+        <section class="display-product-table">
+            <table class="table table-bordered" style="border">
+                <tbody>
+                    {% for product in data %}
+                    <tr>
+                       <th style="background-color: black; color: white; font-weight: bold;">Image</th>
+                       <td style="vertical-align: middle;"><img src="{{ asset('uploads/product/' ~ product.getPhoto()) }}" class="product-image" /></td>
+                    </tr>
+                    <tr>
+                       <th style="background-color: black; color: white; font-weight: bold;">Name</th>
+                       <td style="vertical-align: middle;">{{ product.getName() }}</td>
+                    </tr>
+                    <tr>
+                       <th style="background-color: black; color: white; font-weight: bold;">Price</th>
+                       <td style="vertical-align: middle;">{{ product.getPrice()|number_format(2, '.', ',') }}$</td>
+                    </tr>
+                    <tr>
+                       <th style="background-color: black; color: white; font-weight: bold;">Description</th>
+                       <td style="vertical-align: middle;">{{ product.getDescription() }}</td>
+                    </tr>
+                    <tr>
+                    <form action="{{ path('app_cart_add', {'product_id': product.getId()}) }}" method="post">
+                    <button type="submit" class="btn" name="add_to_cart" style="background-color:red;color: white; margin-bottom: 10px;line-height:3rem; font-size:1.7rem">Add to cart</button> </form>
+                    </tr>
+                    </form>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% include "footer.html.twig" %}
+{% block javascripts %}
+  <script>
+    function delete123(url) {
+      if (confirm("Go go go!")) {
+        window.location.href = url;
+      }
+    }
+  </script>
+{% endblock %}

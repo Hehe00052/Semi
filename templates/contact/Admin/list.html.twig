@@ -2,7 +2,7 @@
 
 {% block title %}Request{% endblock %}
 
-{% block stylesheets %}
+{# {% block stylesheets %}
     <style>
         body {
             background-color: #f0f0f0;
@@ -51,7 +51,7 @@
             background-color: #555555;
         }
     </style>
-{% endblock %}
+{% endblock %} #}
 
 {% block body %}
     <div class="container">
@@ -79,7 +79,7 @@
                             <td>{{ contact.getPhone() }}</td>
                             <td>{{ contact.getMessage() }}</td>
                             <td class="comment-cell">
-                                <a href="{{ path('app_admin_delete', {'id': contact.getId()}) }}" class="btn btn-warning">Delete</a>
+                                <a href="{{ path('app_admin_delete', {'id': contact.getId()}) }}" class="btn btn-outline-dark">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -87,4 +87,10 @@
             </table>
         </div>
     </div>
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"/>
+<link rel="stylesheet" href="{{asset('cssK/Base.css')}}"/>
+<link rel="stylesheet" href="{{asset('cssK/Contactadminlist.css')}}"/>
 {% endblock %}

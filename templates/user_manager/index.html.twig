@@ -28,6 +28,7 @@
                     <td>{{u.getFirstName()}}</td>    
                     <td>{{u.getLastName()}}</td>            
                     <td>
+                        <a href="javascript:deletestaff('{{path('app_delete_user',{'id':u.getId()})}}')" class="btn btn-outline-dark"> Delete</a>
                         <a href="#" class="btn btn-warning">Edit</a>
                         <a href="#" class="btn btn-danger">Delete</a>
                     </td>
@@ -46,5 +47,5 @@
             window.location.href = url;
         }
     }   
-</script>        
+</script>   
 {% endblock %}

@@ -1,3 +1,4 @@
+{# {% extends 'base.html.twig' %} #}
 
 
 {% block title %}Log in!{% endblock %}
@@ -12,7 +13,6 @@
     </header>
 </body>
 <div class="container">
-
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -34,7 +34,6 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-
 <hr>
     <button class="btn btn-danger" type="submit">
         Sign in
@@ -43,8 +42,7 @@
         <p>Don't have an account?  
             <a href="{{ path('app_register') }}" class="register-link"> Register </a> 
             
-        </p>
-        <a href="" class="register-link"> Forgot password? </a> 
+   
     </div>
 </form>
 </div>

@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block title %}Detail of Product{% endblock %}
+
+{% block stylesheets %}
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+     :root{
+    --black: #000000;
+    }
+    .display-product-table table {
+      width: 80%;
+      text-align: center;
+    }
+
+    .container{
+    font-family:Palatino;
+    border: 1px solid var(--black);
+    border-radius: 10px;
+      
+
+    
+}
+    .display-product-table table td {
+      padding: 1.5rem;
+      font-size: 1rem;
+    }
+      
+    .product-image {
+      max-width: 400px; 
+      max-height: 300px; 
+      object-fit: contain; 
+    }
+    .logout{
+    padding: 10px 60px; 
+    text-decoration: none;
+    color: rgb(73, 70, 70);
+    }
+  
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div style="align-items: center">
+        {# <section class="display-product-table"> #}
+        <div style="display: flex; justify-content: center;">
+            <table class="table">
+                <tbody>
+                    {% for product in data %}
+                    <tr>
+                       <th style=" font-weight: bold;">Image</th>
+                       <td style="vertical-align: middle;"><img src="{{ asset('uploads/product/' ~ product.getPhoto()) }}" class="product-image" /></td>
+                    </tr>
+                    <tr>
+                       <th style=" font-weight: bold;">ID</th>
+                       <td style="vertical-align: middle;">{{ product.getId() }}</td>
+                    </tr>
+                    <tr>
+                       <th style=" font-weight: bold;">Category</th>
+                       <td style="vertical-align: middle;">{{ product.getCate.getName() }}</td>
+                    </tr>
+                    <tr>
+                       <th style=" font-weight: bold;">Price</th>
+                       <td style="vertical-align: middle;">{{ product.getPrice()|number_format(2, '.', ',') }}$</td>
+                    </tr>
+                    <tr>
+                       <th style="font-weight: bold;">Name</th>
+                       <td style="vertical-align: middle;">{{ product.getName() }}</td>
+                    </tr>
+                    <tr>
+                       <th style="font-weight: bold;">Description</th>
+                       <td style="vertical-align: middle;">{{ product.getDescription() }}</td>
+                    </tr>
+                    <tr>
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+    function delete123(url) {
+      if (confirm("Go go go!")) {
+        window.location.href = url;
+      }
+    }
+  </script>
+{% endblock %}

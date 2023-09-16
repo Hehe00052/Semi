@@ -30,6 +30,9 @@ class Product
     #[ORM\OneToMany(mappedBy: 'Item', targetEntity: OrderItem::class)]
     private Collection $orderItems;
 
+    #[ORM\Column(length: 254, nullable: true)]
+    private ?string $Description = null;
+
     public function __construct()
     {
         $this->orderItems = new ArrayCollection();
@@ -118,6 +121,18 @@ class Product
                 $orderItem->setItem(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->Description;
+    }
+
+    public function setDescription(?string $Description): static
+    {
+        $this->Description = $Description;
 
         return $this;
     }
