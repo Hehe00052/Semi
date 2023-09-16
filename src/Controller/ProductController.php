@@ -64,7 +64,7 @@ class ProductController extends AbstractController
         $quer = $quer->createQuery('SELECT product FROM App\Entity\Product product');
         $listproduct = $quer->getResult();
 
-        return $this->render('product/admin/list.html.twig', [
+        return $this->render('product/Admin/list.html.twig', [
             'data' => $listproduct
         ]);
     }
