@@ -1,5 +1,4 @@
 {% include "header.html.twig" %}
-
 {% block title %}Cart manager
 {% endblock %}
 {% block stylesheets %}
@@ -61,7 +60,12 @@
 				<td>{{cart_manager.amount|number_format(2, '.', ',')}}$</td>
 			</tr>
 		</table>
-		<a href="{{path('app_order')}}" class="button" style="margin-left:32rem">Check out</a>
+	{% if cart_manager.items is empty %}
+    <p>Your cart is empty. Please add items to your cart before proceeding with payment.</p>
+    {% else %}
+		<a href="{{path('app_order')}}" class="button" style="margin-left:32rem">Pay By Cash</a>
+		<a href="{{path('checkout')}}" class="button" style="margin-left:31rem">Pay By Credit Cash</a>
+	{% endif %}
 	</div>
 {% endblock %}
 {% include "footer.html.twig" %}
